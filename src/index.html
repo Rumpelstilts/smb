@@ -13,19 +13,14 @@
 
 
 <body>
-<ng-include src="'templates/tiles/promo.html'"></ng-include>
-
-<!-- <main-menu></main-menu>
- -->
-<ng-include src = "'templates/tiles/menu.html'"></ng-include>
+<ng-include src="'app/layout/promo.html'"></ng-include>
+<ng-include src = "'app/layout/menu.html'"></ng-include>
  <div class="container">
 	<div ui-view>
-		<ng-include src="'templates/common/loader.html'"></ng-include>
+		<ng-include src="'app/static/loader.html'"></ng-include>
 	</div>
 </div>
-
-<ng-include src="'templates/tiles/footer.html'"></ng-include>
-
+<ng-include src="'app/layout/footer.html'"></ng-include>
 <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
 <script src="js/bundle.js"></script>
 </body>

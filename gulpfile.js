@@ -21,7 +21,7 @@ gulp.task('main_bower_files', function () {
           ignore: true // sass source is included in bundle.sass so we don't need this here; native js is replaced with ui.bootstrap
         },
         angular: {
-          ignore: true // gotta add that manually, because order of jquery and angular is important
+          ignore: true // gotta add this manually, because order of jquery and angular is important
         },
         jquery: {
           ignore: true // same
@@ -82,9 +82,7 @@ gulp.task('json', function () {
 })
 
 gulp.task('templates', function () {
-  return gulp.src([
-    './src/**/**/*.html',
-  ])
+  return gulp.src('./src/**/**/*.html')
     .pipe(gulp.dest('./dist'))
     .pipe(browserSync.stream())
 })

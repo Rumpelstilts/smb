@@ -1,0 +1,24 @@
+<div ng-init="temp_show_registration = null;">
+	<div class="modal-header">
+		<button class="close" ng-click="modal.cancel()">×</button>
+		<h4 class="modal-title">
+			<span ng-show="temp_show_registration == null">Вход в сервис</span>
+			<span ng-show="temp_show_registration == 1">Регистрация</span>
+			<span ng-show="temp_show_registration == 0">Авторизация</span>
+		</h4>
+	</div>
+	<div class="modal-body">
+		<p ng-show="temp_show_registration == null">
+			Для продолжения работы с сервисом Вам необходимо <a href="javascript:void(0)" ng-click="temp_show_registration = 0;">авторизоваться</a>
+			или <a href="javascript:void(0)" ng-click="temp_show_registration = 1;">зарегистрироваться</a>
+		</p>
+
+		<div ng-show="temp_show_registration == 1">
+			<ng-include src="'app/user/register/registration_sm.html'"></ng-include>
+		</div>
+
+		<div ng-show="temp_show_registration == 0">
+			<ng-include src="'app/user/register/login_sm.html'"></ng-include>
+		</div>
+	</div>
+</div>
