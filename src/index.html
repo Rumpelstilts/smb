@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="smb">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+
+	<title>Регистрация ИП и ООО бесплатно</title>
+
+	<link href="css/bundle.css" rel="stylesheet">
+	
+</head>
+
+
+<body>
+<ng-include src="'templates/tiles/promo.html'"></ng-include>
+
+<!-- <main-menu></main-menu>
+ -->
+<ng-include src = "'templates/tiles/menu.html'"></ng-include>
+ <div class="container">
+	<div ui-view>
+		<ng-include src="'templates/common/loader.html'"></ng-include>
+	</div>
+</div>
+
+<ng-include src="'templates/tiles/footer.html'"></ng-include>
+
+<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+<script src="js/bundle.js"></script>
+</body>
+</html>

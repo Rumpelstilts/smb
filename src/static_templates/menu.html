@@ -1,0 +1,38 @@
+<div ng-controller="main_menu_ctrl">
+	<nav class="navbar navbar-default">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+			</div>
+			<div id="navbar" class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+					<li><a ui-sref="landing"><i class="fa fa-home"></i></a></li>
+					<li><a ui-sref="registration_ip">Регистрация ИП</a></li>
+					<li><a ui-sref="ltd_type_choice">Регистрация ООО</a></li>
+					<!--<li ui-sref-active="active"><a ui-sref="choose_address">Выбор адреса</a></li>-->
+					<!--<li ui-sref-active="active"><a ui-sref="available_directives">Доступные директивы</a></li>-->
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li ng-show="user_status == 'unknown'">
+						<div ng-controller="user_registration_ctrl">
+							<button ui-sref="login" class="btn btn-success">Авторизация</button>
+							<button class="btn btn-default" ng-click="openRegistrationOrLoginModal()">Вход</button>
+						</div>
+					</li>
+					<li ng-hide="user_status == 'unknown'">
+						<button ui-sref="profile" class="btn btn-success">Личный кабинет</button>
+					</li>
+					<li ng-hide="user_status == 'unknown'">
+						<a ng-click = "logout()">Выход <i class="fa fa-sign-out"></i></a>
+					</li>
+				</ul>
+			</div><!--/.nav-collapse -->
+		</div>
+	</nav>
+</div>
+

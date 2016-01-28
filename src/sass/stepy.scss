@@ -1,0 +1,27 @@
+.stepy-header { list-style: none; padding: 0; overflow: hidden}
+.stepy-header li { cursor: pointer; float: left; padding: 10px }
+.stepy-header li div {
+	background: #efefef ;
+	border-radius: 50%;
+	color: #ccc;
+	font-size: 18px;
+	height: 45px;
+	padding-top: 10px;
+	text-align: center;
+	width: 45px;
+}
+.stepy-header li.stepy-active div { color: #000; cursor: auto }
+.stepy-header li span { display: none }
+.stepy-header li.stepy-active span { color: #BBB }
+
+.stepy-step { border: 1px solid #BBB; clear: left; padding: 15px 20px; -khtml-border-radius: 3px; -moz-border-radius: 3px; -opera-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px }
+
+.stepy-navigator { height: 33px; margin-top: 20px }
+.button-back { float: left }
+
+.button-next,
+.stepy-navigator input[type="submit"] { float: right }
+
+legend {
+	border: 1px solid #ccc; margin-bottom: 0; padding: 10px; text-align: center;
+}
