@@ -1,0 +1,20 @@
+<div class="row">
+	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 form-group">
+		
+		<label>Гражданство:</label>
+
+		<select class="form-control" ng-model = 'cc.person.citizenship' name="citizenshipCode">
+			<option ng-repeat = "citizenship in cc.citizenships" value = "{{citizenship.id}}" ng-bind = "citizenship.name">
+			</option>
+		</select>
+	</div>
+
+
+	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 form-group" ng-if="cc.person.citizenship == 'foreigner'">
+		<label>Выберите страну:</label>
+
+		<select class="form-control" ng-model = 'cc.person.country' name="country">
+			<option ng-repeat = "country in cc.countries" value = "{{country.id}}" ng-bind = "country.name"></option>
+		</select>
+	</div>
+</div>

@@ -1,0 +1,78 @@
+<div class="row">
+	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 form-group">
+		<label>Фамилия<sup class="required">*</sup>
+			<i class="fa fa-info-circle" popover-placement="top" uib-popover="Введите свою фамилию точно так, как у Вас в паспорте" popover-trigger="mouseenter"></i>
+		</label>
+		<input type="text" class="form-control" name="lastname" ng-model="pd.person.last_name" placeholder="Иванов">
+	</div>
+	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 form-group">
+		<label>Имя<sup class="required">*</sup>
+			<i class="fa fa-info-circle" popover-placement="top" uib-popover="Введите своё имя точно так, как у Вас в паспорте" popover-trigger="mouseenter"></i>
+		</label>
+		<input type="text" class="form-control" name="name" ng-model="pd.person.name" placeholder="Иван">
+	</div>
+	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 form-group">
+		<label>Отчество<sup class="required">*</sup>
+			<i class="fa fa-info-circle" popover-placement="top" uib-popover="Введите своё отчество точно так, как у Вас в паспорте" popover-trigger="mouseenter"></i>
+		</label>
+		<input type="text" class="form-control" name="middlename" ng-model="pd.person.mid_name" placeholder="Иванович">
+	</div>
+</div>
+
+<div class="row" ng-if="pd.person.citizenship == 'foreigner'">
+	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 form-group">
+		<label>Фамилия<sup class="required">*</sup>
+			<i class="fa fa-info-circle" popover-placement="top" uib-popover="Укажите ваше имя точно так, как у вас в паспорте. Требуется указать дважды: латинскими и кириллическими буквами." popover-trigger="mouseenter"></i>
+		</label>
+		<input type="text" class="form-control" name="lastnameForeigner" ng-model="pd.person.name_roman" placeholder="Ivanov">
+		<span class="hint">Латиницей</span>
+	</div>
+	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 form-group">
+		<label>Имя<sup class="required">*</sup>
+			<i class="fa fa-info-circle" popover-placement="top" uib-popover="Укажите ваше имя точно так, как у вас в паспорте. Требуется указать дважды: латинскими и кириллическими буквами." popover-trigger="mouseenter"></i>
+		</label>
+		<input type="text" class="form-control" name="nameForeigner" ng-model="pd.person.name_roman" placeholder="Ivan">
+		<span class="hint">Латиницей</span>
+	</div>
+	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 form-group">
+		<label>Отчество</label>
+		<input type="text" class="form-control" name="middlenameForeigner" ng-model="pd.person.mid_name_roman" placeholder="Ivanovich">
+		<span class="hint">Латиницей</span>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 form-group">
+		<label>Место рождения<sup class="required">*</sup>
+			<i class="fa fa-info-circle" popover-placement="top" uib-popover="Укажите место своего рождения" popover-trigger="mouseenter"></i>
+		</label>
+		<input type="text" class="form-control" name="birthPlace" ng-model="pd.person.birth_location" placeholder="Место рождения">
+	</div>
+	<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 form-group">
+		<label>Дата рождения<sup class="required">*</sup>
+			<i class="fa fa-info-circle" popover-placement="top" uib-popover="Изменить год рождения можно по клику на заголовок календаря" popover-trigger="mouseenter"></i>
+		</label>
+
+		<div class="input-group">
+			<input type="text" name="birthDate" ng-model="pd.person.birth_date" class="form-control" ng-mask masktype="dt">
+				<span class="input-group-addon">
+					<i class="fa fa-calendar"></i>
+				</span>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group">
+		<label>Пол<sup class="required">*</sup></label>
+		<div>
+			<label class="radio-inline">
+				<input class="radio" name="sex" type="radio" value="1" ng-model="pd.person.gender"> Муж.
+			</label>
+			<label class="radio-inline">
+				<input class="radio" name="sex" type="radio" value="2" ng-model="pd.person.gender">Жен.
+			</label>
+		</div>
+
+	</div>
+</div>

@@ -1,0 +1,98 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<h1>Регистрация ИП</h1>
+			<p>
+				Внимательно заполняйте поля. В случае необходимости обращайтесь к подсказкам —
+				они расположены рядом с каждым полем и обозначаются иконкой <i class="fa fa-info-circle"></i>.
+			</p>
+			<p>
+				* — обязательные для заполнения поля.
+			</p>
+		</div>
+	</div>
+	<div class="row" ng-controller = "ie_register_controller as ie">
+		<div class="col-md-12">
+			<form id = "register_ie" smb-steps>
+				<fieldset title="1">
+					<legend>1. Данные заявителя</legend>
+					<div ng-cloak class="text-center cloak-loader">
+						<p>Идет загрузка... <i class="fa fa-spinner fa-pulse"></i></p>
+					</div>
+					<div ng-cloak ng-include="'app/register/ie/applicant_details.html'"></div>
+				</fieldset>
+				<input type="submit" class="btn btn-primary stepy-finish"/>
+			</form>
+		</div>
+	</div>
+	
+
+
+	<!-- <div ng-controller="registration_sp_ctrl">
+		<form id="registration-sp" form-validate form-steps> -->
+			 <!--&lt;!&ndash;step1 start &ndash;&gt;-->
+			<!-- <fieldset title="1">
+				<legend>1. Данные заявителя</legend>
+
+				<div ng-cloak class="text-center cloak-loader">
+					<p>Идет загрузка... <i class="fa fa-spinner fa-pulse"></i></p>
+				</div>
+				<div ng-cloak ng-include="'templates/steps/ip/personal_info.html'"></div>
+			</fieldset> -->
+			 <!--&lt;!&ndash;step1 end &ndash;&gt;-->
+
+			<!-- step2 start -->
+			<!-- <fieldset title="2">
+				<legend>2. Место жительства</legend>
+				<div ng-cloak class="text-center cloak-loader">
+					<p>Идет загрузка... <i class="fa fa-spinner fa-pulse"></i></p>
+				</div>
+				<div ng-cloak ng-include="'templates/steps/ip/choose_address.html'"></div>
+			</fieldset> -->
+			<!-- step2 end -->
+
+			<!--&lt;!&ndash; step3 start &ndash;&gt;-->
+			<!-- <fieldset title="3">
+				<legend>3. Получение документов</legend>
+				<div ng-cloak class="text-center cloak-loader">
+					<p>Идет загрузка... <i class="fa fa-spinner fa-pulse"></i></p>
+				</div>				
+				<div ng-include="'templates/steps/ip/receive_documents.html'"></div>
+			</fieldset> -->
+			<!--&lt;!&ndash; step3 end &ndash;&gt;-->
+
+			<!--&lt;!&ndash; step4 start &ndash;&gt;-->
+		<!-- 	<fieldset title="4">
+				<legend>4. Выбор видов деятельности</legend>
+				<div ng-cloak  class="text-center cloak-loader">
+					<p>Идет загрузка... <i class="fa fa-spinner fa-pulse"></i></p>
+				</div>					
+				<div ng-cloak ng-include="'templates/steps/ip/okveds.html'"></div>
+			</fieldset>  -->
+			<!--&lt;!&ndash; step4 end &ndash;&gt;-->
+
+			<!--&lt;!&ndash; step5 start &ndash;&gt;-->
+			<!-- <fieldset title="5">
+				<legend>5. Система налогообложения</legend>
+				<div ng-cloak  class="text-center cloak-loader">
+					<p>Идет загрузка... <i class="fa fa-spinner fa-pulse"></i></p>
+				</div>				
+				<div ng-cloak ng-include="'templates/steps/ip/taxes.html'"></div>
+				</div>
+			</fieldset> -->
+			<!--&lt;!&ndash; step5 end &ndash;&gt;-->
+
+			<!--&lt;!&ndash; step6 start &ndash;&gt;-->
+			<!-- <fieldset title="6">
+				<legend>6. Открытие счета</legend>
+				<div ng-cloak class="text-center cloak-loader">
+					<p>Идет загрузка... <i class="fa fa-spinner fa-pulse"></i></p>
+				</div>
+				<div ng-cloak ng-include="'templates/steps/bank_account.html'"></div>
+			</fieldset> -->
+			<!--&lt;!&ndash; step6 end &ndash;&gt;-->
+
+<!-- 			<input type="submit" class="btn btn-primary stepy-finish"/>
+		</form>
+	</div>
+</div> -->

@@ -1,0 +1,33 @@
+{
+	"citizenshipCode": "ru",
+	"country": "Россия",
+	"lastname": "",
+	"name": "",
+	"middlename": "",
+	"lastnameForeigner": "",
+	"nameForeigner": "",
+	"middlenameForeigner": "",
+	"birthPlace": "",
+	"birthDate": "",
+	"sex": 1,
+
+	"passportCode": "",
+	"passportNum": "",
+	"passportDt": "",
+	"passportAgency": "",
+	"passportAgencyCode": "",
+
+	"passportNumForeigner": "",
+	"passportDtForeigner": "",
+	"passportAgencyForeigner": "",
+	"permitDocumentType": "",
+	"permitDocumentNumber": "",
+	"permitDocumentDt": "",
+	"permitDocumentExpiry": "",
+	"permitDocumentAgency": "",
+
+	"phone": "+7 (444) 444-44-44",
+	"email": "",
+
+	"inn": ""
+}

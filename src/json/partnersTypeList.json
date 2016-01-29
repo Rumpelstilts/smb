@@ -1,0 +1,10 @@
+[
+	{
+		"sysname": "admin",
+		"description": "Партнер — админ"
+	},
+	{
+		"sysname": "bank",
+		"description": "Партнер — банк"
+	}
+]

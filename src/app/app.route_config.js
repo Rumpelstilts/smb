@@ -18,6 +18,10 @@
         url: '/landing',
         templateUrl: 'app/static/landing.html'
       })
+      .state('register_ie', {
+        url: '/registration/ie',
+        templateUrl: 'app/register/ie.html'
+      })
 
       // $stateProvider
       // .state('registration', {
