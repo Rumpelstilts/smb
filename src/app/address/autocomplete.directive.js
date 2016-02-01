@@ -5,7 +5,8 @@
     .module('smb')
     .directive('smbAutocomplete', smbAutocomplete)
   /* @ngInject */
-  function smbAutocomplete () {
+  smbAutocomplete.$inject = ['$compile', '$injector']
+  function smbAutocomplete ($compile, $injector) {
     // Usage:
     // <div smb-autocomplete type = 'some_type' subject = 'some_subject'></div>
     // Creates:

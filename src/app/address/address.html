@@ -10,7 +10,7 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-md-12" smb-custom-address model = 'ie.address' ng-show="custom_input"></div>
+			<div class="col-md-12" smb-custom-address model = 'ie.address' coords = 'ie.address_coords' ng-show="custom_input"></div>
 		</div> 
 		
 	</div>
@@ -22,7 +22,7 @@
 </div>
 <div class="row">
 	<div class="col-md-12">
-		<div smb-y-map id="individual_map" style = "width: 100%; height: 500px"></div>
+		<div smb-y-map id="individual_map" coords = 'ie.address_coords' style = "width: 100%; height: 500px"></div>
 	</div>
 </div>
 

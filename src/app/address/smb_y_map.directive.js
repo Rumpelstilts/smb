@@ -13,10 +13,11 @@
     var smbYMap = {
       bindToController: true,
       controller: Controller,
-      controllerAs: 'vm',
+      controllerAs: 'ym',
       link: link,
       restrict: 'A',
       scope: {
+        coords: '=coords'
       }
     }
     return smbYMap
@@ -44,7 +45,7 @@
         }
 
         // watch dadata object coords
-        scope.$watch('address_coords', function (newValue, oldValue) {
+        scope.$watch('ym.coords', function (newValue, oldValue) {
           if (newValue.length > 0) {
             y_map.setCenter(newValue, 15, {
               checkZoomRange: true

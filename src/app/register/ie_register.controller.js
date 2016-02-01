@@ -8,11 +8,12 @@
   /* @ngInject */
   function ie_register_controller (individual, passport, permission, contact_data) {
     var vm = this
-    vm.contact_data = ''
-    vm.individual = ''
-    vm.individual_passport = ''
-    vm.individual_foreign_passport = ''
-    vm.permission = ''
+    vm.address_coords = []
+    vm.contact_data
+    vm.individual
+    vm.individual_passport
+    vm.individual_foreign_passport
+    vm.permission
     activate()
     // //////////////
     function activate () {
