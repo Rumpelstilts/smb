@@ -1,0 +1,23 @@
+<h3>Контактные данные</h3>
+<div class="row">
+	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 form-group">
+		<label>Телефон<sup class="required">*</sup></label>
+		<div class="input-group">
+			<span class="input-group-addon">
+				<i class="fa fa-mobile"></i>
+			</span>
+			<input type="text" name="phone" ng-model="cdc.contact.phone_num" class="form-control" ng-mask masktype="phone">
+		</div>
+		<span class="hint">Указывается номер мобильного телефона.</span>
+	</div>
+	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 form-group">
+		<label>Email<sup class="required">*</sup></label>
+		<div class="input-group">
+			<span class="input-group-addon">
+				<i class="fa fa-envelope-o"></i>
+			</span>
+			<input type="text" name="email" ng-model="cdc.contact.email" class="form-control">
+		</div>
+		<span class="hint">Обязательно указывайте действующий email. На него будет выслана необходимая информация.</span>
+	</div>
+</div>

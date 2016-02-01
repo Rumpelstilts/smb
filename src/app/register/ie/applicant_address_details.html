@@ -1,0 +1,28 @@
+<h1>Выбор адреса</h1>
+<div class="row">
+	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group">
+		<div class="btn-group" role="group">
+			<button type="button" class="btn btn-default" ui-sref-active="active" ui-sref="registration_ip.choose_address_new">Новый адрес</button>
+			<button type="button" class="btn btn-default" ui-sref-active="active" ui-sref="registration_ip.choose_address_buy">Предоставить юр. адрес</button>
+		</div>
+	</div>
+</div>
+
+<div ui-view>
+	<div class="alert alert-info">
+		Для выбора адреа Вы можете воспользоваться следующими опциями:
+		<ul>
+			<li>
+				<strong>Выбор нового адреса:</strong> просто начните набирать адрес в поле,
+				при необходимости переключившись в режим ручного ввода и используя инерактивную карту.
+			</li>
+			<li>
+				<strong>Предоставление юридического адреса:</strong> Вы можете приобрести один из предложенных адресов.
+				Большой выбор городов, полное описание, цены - любая информация доступна по каждому адресу.
+			</li>
+		</ul><br>
+		<p>
+			Для определения режима выбора адреса используйте навигацию сверху.
+		</p>
+	</div>
+</div>

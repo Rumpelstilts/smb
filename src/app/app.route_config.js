@@ -22,6 +22,9 @@
         url: '/registration/ie',
         templateUrl: 'app/register/ie.html'
       })
+      .state('registration_ip.choose_address_new', {
+        templateUrl: 'app/address/choose_address_new.html'
+      })
 
       // $stateProvider
       // .state('registration', {

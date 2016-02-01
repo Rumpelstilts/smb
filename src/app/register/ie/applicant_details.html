@@ -1,4 +1,9 @@
+<h3>Персональные данные</h3>
 <div smb-citizenship model = 'ie.individual'></div>
 <div smb-person-data model = 'ie.individual'></div>
-<div smb-passport model = 'ie.individual_passport'></div>
+<div smb-passport model = 'ie.individual_passport' ng-if='ie.individual.citizenship == "ru"'></div>
+<div smb-foreign-passport model = 'ie.individual_foreign_passport' ng-if='ie.individual.citizenship == "foreigner"'></div>
+<div smb-permission model = 'ie.permission' ng-if='ie.individual.citizenship == "foreigner"'></div>
+<div smb-contact-data model = 'ie.contact_data'></div>
+<div smb-inn model = 'ie' type = '"individual"' ng-if='ie.individual.citizenship == "ru"'></div>
 <pre>{{ie | json}}</pre>

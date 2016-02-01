@@ -1,0 +1,26 @@
+<h3>Данные паспорта иностранного гражданина</h3>
+<div class="row">
+	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 form-group">
+		<label>Номер<sup class="required">*</sup>
+			<i class="fa fa-info-circle" popover-placement="top" uib-popover="Введите номер точно так, как у Вас в паспорте" popover-trigger="mouseenter"></i>
+		</label>
+		<input type="text" class="form-control" name="passportNumForeigner" ng-model="fpc.passport.number" placeholder="Номер паспорта">
+	</div>
+	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 form-group">
+		<label>Дата выдачи<sup class="required">*</sup>
+			<i class="fa fa-info-circle" popover-placement="top" uib-popover="Изменить год рождения можно по клику на заголовок календаря" popover-trigger="mouseenter"></i>
+		</label>
+		<div class="input-group">
+			<input type="text" name="passportDtForeigner" ng-model="fpc.passport.date_of_issue" class="form-control" ng-mask masktype="dt">
+			<span class="input-group-addon">
+				<i class="fa fa-calendar"></i>
+			</span>
+		</div>
+	</div>
+	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group">
+		<label>Кем выдан<sup class="required">*</sup>
+			<i class="fa fa-info-circle" popover-placement="top" uib-popover="Укажите организацию, выдавшую Вам паспорт" popover-trigger="mouseenter"></i>
+		</label>
+		<input type="text" class="form-control" name="passportAgencyForeigner" ng-model="fpc.passport.agency" placeholder="Кем выдан">
+	</div>
+</div>

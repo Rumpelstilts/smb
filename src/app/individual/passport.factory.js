@@ -14,15 +14,19 @@
 
     // //////////////
     function Passport () {
-      this.series = ''
       this.number = ''
       this.date_of_issue = ''
       this.agency = ''
     }
 
-    function ru () {
+    function RuPassport () {
       Passport.call(this)
+      this.series = ''
       this.agency_code = ''
+    }
+
+    function ru () {
+      return new RuPassport()
     }
 
     function foreign () {

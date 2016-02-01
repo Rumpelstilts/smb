@@ -1,0 +1,54 @@
+<h4>Основание для пребывания на территории РФ</h4>
+<div class="row">
+	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group">
+		<label>Вид документа<sup class="required">*</sup></label>
+		<div>
+			<label class="radio-inline">
+				<input class="radio" name="permitDocumentType" type="radio" value="1" ng-model="fpc.permission.permit_doc_type"> Вид на жительство
+			</label>
+			<label class="radio-inline">
+				<input class="radio" name="permitDocumentType" type="radio" value="2" ng-model="fpc.permission.permit_doc_type"> Разрешение на временное пребывание
+			</label>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 form-group">
+		<label>Номер<sup class="required">*</sup>
+			<i class="fa fa-info-circle" popover-placement="top" uib-popover="Укажите номер документа" popover-trigger="mouseenter"></i>
+		</label>
+		<input type="text" class="form-control" name="permitDocumentNumber" ng-model="fpc.permission.number" placeholder="Номер документа">
+	</div>
+	<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 form-group">
+		<label>Дата выдачи<sup class="required">*</sup>
+			<i class="fa fa-info-circle" popover-placement="top" uib-popover="Укажите дату выдачи, указанную в документе" popover-trigger="mouseenter"></i>
+		</label>
+		<div class="input-group">
+			<input type="text" name="permitDocumentDt" ng-model="fpc.permission.date_of_issue" class="form-control" ng-mask masktype="dt">
+			<span class="input-group-addon">
+				<i class="fa fa-calendar"></i>
+			</span>
+		</div>
+	</div>
+
+	<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 form-group" >
+		<label>Действителен до<sup class="required">*</sup>
+			<i class="fa fa-info-circle" popover-placement="top" uib-popover="Укажите дату, до которой дествителен документ" popover-trigger="mouseenter"></i>
+		</label>
+		<div class="input-group">
+			<input type="text" name="permitDocumentExpiry" ng-model="fpc.permission.exp_date" class="form-control" ng-mask masktype="dt">
+			<span class="input-group-addon">
+				<i class="fa fa-calendar"></i>
+			</span>
+		</div>
+	</div>	
+</div>
+<div class="row">
+	<div class="col-md-12 form-group">
+		<label>Кем выдан<sup class="required">*</sup>
+			<i class="fa fa-info-circle" popover-placement="top" uib-popover="Укажите организацию, выдавшую этот документ" popover-trigger="mouseenter"></i>
+		</label>
+		<input type="text" class="form-control" name="permitDocumentAgency" ng-model="fpc.permission.agency" placeholder="Кем выден">
+	</div>
+</div>
