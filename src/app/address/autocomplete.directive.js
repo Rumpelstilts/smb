@@ -46,11 +46,6 @@
             scope.ac.subject.address.fnsName = suggestion.data.tax_office
 
             scope.ac.subject.address_coords = [parseFloat(suggestion.data.geo_lat), parseFloat(suggestion.data.geo_lon)]
-            /*
-             geo_lat Координаты: широта
-             geo_lon Координаты: долгота
-            * */
-            // scope.ac.subject.map.setCenter([suggestion.data.geo_lon, suggestion.data.geo_lat])
             console.log(scope.ac.subject)
             scope.$apply()
           }

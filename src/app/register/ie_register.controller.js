@@ -10,6 +10,7 @@
     var vm = this
     vm.address_coords = []
     vm.contact_data
+    vm.doc_delivery = 3
     vm.individual
     vm.individual_passport
     vm.individual_foreign_passport

@@ -28,6 +28,20 @@
 					</div>
 					<div ng-cloak ng-include="'app/register/ie/applicant_address_details.html'"></div>
 				</fieldset>
+				<fieldset title="3">
+					<legend>3. Получение документов</legend>
+					<div ng-cloak class="text-center cloak-loader">
+						<p>Идет загрузка... <i class="fa fa-spinner fa-pulse"></i></p>
+					</div>				
+					<div ng-include="'app/register/ie/doc_delivery.html'"></div>
+				</fieldset>
+				<fieldset title="4">
+				<legend>4. Выбор видов деятельности</legend>
+					<div ng-cloak  class="text-center cloak-loader">
+						<p>Идет загрузка... <i class="fa fa-spinner fa-pulse"></i></p>
+					</div>					
+					<!-- <div ng-cloak ng-include="'templates/steps/ip/okveds.html'"></div> -->
+				</fieldset>
 				<input type="submit" class="btn btn-primary stepy-finish"/>
 			</form>
 			<pre>{{ie | json}}</pre>

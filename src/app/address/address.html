@@ -10,13 +10,25 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-md-12" smb-custom-address model = 'ie.address' coords = 'ie.address_coords' ng-show="custom_input"></div>
+			<div class="col-md-12" smb-custom-address model = 'ie.address'  ng-show="custom_input"></div>
 		</div> 
 		
 	</div>
 	<div class="col-xs-12 col-sm-12 col-md-5 col-lg-4">
 		<div class="well">
-			<!-- <template-include template = 'templates/address_data/custom_address_preview.html' model = "address"></template-include> -->
+			<h4>Вы выбрали адрес:</h4>
+			<div><strong>Субъект РФ:</strong><span ng-bind = 'ie.address.region'></span></div>
+			<div><strong>Город/Населенный пункт:</strong> <span ng-bind = 'ie.address.city'></span></div>
+			<div><strong>Улица:</strong> <span ng-bind = 'ie.address.street'></span></div>
+			<div><strong>Дом:</strong> <span ng-bind = 'ie.address.building'></span></div>
+			<div><strong>Тип дома:</strong> <span ng-bind = 'ie.address.buildingType'></span></div>
+			<div><strong>Корпус:</strong> <span ng-bind = 'ie.address.housing'></span></div>
+			<div><strong>Тип корпуса:</strong> <span ng-bind = 'ie.address.housingType'></span></div>
+			<div><strong>Квартира:</strong> <span ng-bind = 'ie.address.flat'></span></div>
+			<div><strong>Тип квартиры:</strong> <span ng-bind = 'ie.address.flatType'></span></div>
+			<div><strong>Индекс:</strong> <span ng-bind = 'ie.address.zip'></span></div>
+			<hr>
+			<div><strong>Налоговая:</strong> <span ng-bind = 'ie.address.fnsName'></span></div>
 		</div>
 	</div>
 </div>
