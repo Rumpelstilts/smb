@@ -53,7 +53,8 @@ gulp.task('js', function () {
     config.bower_dir + '/jquery-validation/dist/jquery.validate.min.js',
     config.bower_dir + '/jquery-validation/dist/additional-methods.min.js',
     './build/**/**/*.js',
-    './src/**/**/*.js'])
+    './src/**/**/*.js'
+  ])
     .pipe(sourcemaps.init())
     .pipe(concat('bundle.js'))
     .pipe(sourcemaps.write('.'))

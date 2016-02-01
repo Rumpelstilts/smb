@@ -1,0 +1,23 @@
+<div class="row">
+	<div class="col-sm-12 col-md-7 col-lg-8">
+		<div class="row">
+			<div class="col-md-12">
+				<input type="text" class="form-control" placeholder="Начните вводить адрес..." smb-autocomplete suggestiontype="address" model = 'ie' ng-disabled="custom_input">
+				<div>
+					<label class="checkbox-inline"><input type="checkbox" data-ng-model="custom_input"> Ввести данные вручную</label>
+					<p class="text-muted"><em>Если вы не нашли свой адрес в подсказках, заполните поля вручную.</em></p>			
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12" smb-custom-address model = 'ie.address' ng-show="custom_input"></div>
+		</div> 
+		
+	</div>
+	<div class="col-xs-12 col-sm-12 col-md-5 col-lg-4">
+		<div class="well">
+			<!-- <template-include template = 'templates/address_data/custom_address_preview.html' model = "address"></template-include> -->
+		</div>
+	</div>
+</div>
+

@@ -1,4 +1,4 @@
-/*global angular*/
+/*global angular $*/
 ;(function () {
   'use strict'
   angular
@@ -11,12 +11,18 @@
     // Creates:
     // suggestions service from dadata.ru
     var smbAutocomplete = {
+      bindToController: true,
+      controller: Controller,
+      controllerAs: 'ac',
       link: link,
-      restrict: 'A'
+      restrict: 'A',
+      scope: {
+        subject: '=model'
+      }
     }
     return smbAutocomplete
     function link (scope, element, attrs) {
-      var suggestion_type = attrs['type']
+      var suggestion_type = attrs['suggestiontype']
       var suggestion_params = {
         serviceUrl: 'https://dadata.ru/api/v2',
         token: 'ef019a658eb47dedeab2ec55adadffec7f1676c7',
@@ -25,34 +31,45 @@
       }
       switch (suggestion_type) {
         case 'address' :
-          var subject = attrs['subject']
           suggestion_params['onSelect'] = function (suggestion) {
-            console.log(suggestion)
+            scope.ac.subject.address.region = suggestion.data.region_with_type
+            scope.ac.subject.address.city = suggestion.data.city_with_type
+            scope.ac.subject.address.street = suggestion.data.street_with_type
+            scope.ac.subject.address.building = suggestion.data.house
+            scope.ac.subject.address.buildingType = suggestion.data.house_type_full
+            scope.ac.subject.address.housing = suggestion.data.block
+            scope.ac.subject.address.housingType = suggestion.data.block_type
+            scope.ac.subject.address.flat = suggestion.data.flat
+            scope.ac.subject.address.flatType = suggestion.data.flat_type
+            scope.ac.subject.address.zip = suggestion.data.postal_code
+            scope.ac.subject.address.fnsName = suggestion.data.tax_office
 
-            subject.address.region = suggestion.data.region_with_type
-            subject.address.city = suggestion.data.city_with_type
-            subject.address.street = suggestion.data.street_with_type
-            subject.address.building = suggestion.data.house
-            subject.address.buildingType = suggestion.data.house_type_full
-            subject.address.housing = suggestion.data.block
-            subject.address.housingType = suggestion.data.block_type
-            subject.address.flat = suggestion.data.flat
-            subject.address.flatType = suggestion.data.flat_type
-            subject.address.zip = suggestion.data.postal_code
-            subject.address.fnsName = suggestion.data.tax_office
-
-            subject.address_coords = [parseFloat(suggestion.data.geo_lat), parseFloat(suggestion.data.geo_lon)]
-          /*
-           geo_lat Координаты: широта
-           geo_lon Координаты: долгота
-          * */
-          // subject.map.setCenter([suggestion.data.geo_lon, suggestion.data.geo_lat])
+            scope.ac.subject.address_coords = [parseFloat(suggestion.data.geo_lat), parseFloat(suggestion.data.geo_lon)]
+            /*
+             geo_lat Координаты: широта
+             geo_lon Координаты: долгота
+            * */
+            // scope.ac.subject.map.setCenter([suggestion.data.geo_lon, suggestion.data.geo_lat])
+            console.log(scope.ac.subject)
+            scope.$apply()
           }
           break
         default:
-          return
+          suggestion_params['onSelect'] = function (suggestion) {}
+          break
       }
-      element.suggestions(suggestion_params)
+      $(element).suggestions(suggestion_params)
+    }
+  }
+  Controller.$inject = ['address']
+  function Controller (address) {
+    var vm = this
+    activate()
+
+    function activate () {
+      if (!vm.subject.address) {
+        vm.subject.address = address()
+      }
     }
   }
 })()
