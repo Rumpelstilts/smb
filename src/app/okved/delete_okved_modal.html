@@ -1,0 +1,11 @@
+<div class="modal-header">
+	<button class="close" ng-click="vm.cancel()">×</button>
+	<h4 class="modal-title">ОКВЭД</h4>
+</div>
+<div class="modal-body">
+	Вы действительно хотите удалить ОКВЭД №<span ng-bind = 'vm.okveds[vm.delete_idx].id'></span>?
+</div>
+<div class="modal-footer">
+	<button class="btn btn-default" ng-click="vm.cancel()">Отмена</button>
+	<button class="btn btn-danger" ng-click="vm.delete_okved()"> Удалить</button>
+</div>

@@ -14,7 +14,7 @@
 	<div class="row" ng-controller = "ie_register_controller as ie">
 		<div class="col-md-12">
 			<form id = "register_ie" smb-steps>
-				<fieldset title="1">
+				<!-- <fieldset title="1">
 					<legend>1. Данные заявителя</legend>
 					<div ng-cloak class="text-center cloak-loader">
 						<p>Идет загрузка... <i class="fa fa-spinner fa-pulse"></i></p>
@@ -34,13 +34,13 @@
 						<p>Идет загрузка... <i class="fa fa-spinner fa-pulse"></i></p>
 					</div>				
 					<div ng-include="'app/register/ie/doc_delivery.html'"></div>
-				</fieldset>
+				</fieldset> -->
 				<fieldset title="4">
 				<legend>4. Выбор видов деятельности</legend>
 					<div ng-cloak  class="text-center cloak-loader">
 						<p>Идет загрузка... <i class="fa fa-spinner fa-pulse"></i></p>
 					</div>					
-					<!-- <div ng-cloak ng-include="'templates/steps/ip/okveds.html'"></div> -->
+					<div ng-cloak smb-okveds okveds = 'ie.okveds'></div>
 				</fieldset>
 				<input type="submit" class="btn btn-primary stepy-finish"/>
 			</form>

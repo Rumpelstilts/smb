@@ -1,0 +1,53 @@
+<div class="row">
+	<div class="col-md-12">
+		<div class="alert alert-info">
+			<p><strong>Важно!</strong> В законодательстве нет ограничений по максимальному количеству видов деятельности,
+			которые можно указать при регистрации. Но не стоит указывать то, чем вы не планируете заниматься.
+			Из списка необходимо выбрать виды деятельности, наиболее точно описывающие то, чем вы будете заниматься.
+			Если вы не нашли именно вашего вида, выбирайте наиболее близкий — это не является ошибкой и не повлечет никаких санкций.</p>
+
+			<p>После общего выбора вам будет необходимо указать основной вид деятельности.</p>
+		</div>
+
+		<p>Для выбора основного ОКВЭДа кликните по нужной строке таблицы.</p>
+		<div class="alert alert-warning" ng-if = 'oc.okveds.length == 0'>
+			<p>Вы не выбрали ни одного ОКВЭДа</p>
+		</div> 
+
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>Номер</th>
+					<th>Название</th>
+					<th>Удалить</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="okved in oc.okveds">
+					<td ng-click="oc.set_main_okved(okved)">
+						<span ng-bind = 'okved.id'></span>&nbsp;<span class="label label-success" ng-class="{hidden: !okved.main}">!</span>
+					</td>
+					<td ng-click="oc.set_main_okved(okved)">
+						<span ng-bind = 'okved.title'>
+					</td>
+					<td>
+						<div class="text-center">
+							<button class="btn btn-default" ng-click="oc.call_delete_okved_modal($index)"><i class="fa fa-trash"></i></button>
+						</div>
+					</td>
+				</tr>
+			</tbody>
+			<tfoot>
+				<tr>
+					<td colspan="4">
+						<div class="text-right">
+							<button class="btn btn-primary" ng-click="get_okveds_test_modal()"><i class="fa fa-plus"></i> test</button>
+							<button class="btn btn-primary" ng-click="get_okveds_modal()"><i class="fa fa-plus"></i> Добавить</button>
+						</div>
+					</td>
+				</tr>
+			</tfoot>
+		</table>		
+	</div>
+</div>
+	
