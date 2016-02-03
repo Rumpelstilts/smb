@@ -1,0 +1,62 @@
+<div class="row">
+	<div class="col-md-12">
+		<h1>Регистрация ИП</h1>
+		<p>
+			Внимательно заполняйте поля. В случае необходимости обращайтесь к подсказкам —
+			они расположены рядом с каждым полем и обозначаются иконкой <i class="fa fa-info-circle"></i>.
+		</p>
+		<p>
+			* — обязательные для заполнения поля.
+		</p>
+	</div>
+</div>
+<div class="row" ng-controller = "ie_register_controller as ie">
+	<div class="col-md-12">
+		<form id = "register_ie" smb-steps smb-validate>
+			<fieldset title="1">
+				<legend>1. Данные заявителя</legend>
+				<div ng-cloak class="text-center cloak-loader">
+					<p>Идет загрузка... <i class="fa fa-spinner fa-pulse"></i></p>
+				</div>
+				<div ng-cloak ng-include="'app/register/ie/applicant_details.html'"></div>
+			</fieldset>
+			<fieldset title="2">
+				<legend>2. Место жительства</legend>
+				<div ng-cloak class="text-center cloak-loader">
+					<p>Идет загрузка... <i class="fa fa-spinner fa-pulse"></i></p>
+				</div>
+				<div ng-cloak ng-include="'app/register/ie/applicant_address_details.html'"></div>
+			</fieldset>
+			<fieldset title="3">
+				<legend>3. Получение документов</legend>
+				<div ng-cloak class="text-center cloak-loader">
+					<p>Идет загрузка... <i class="fa fa-spinner fa-pulse"></i></p>
+				</div>				
+				<div ng-include="'app/register/ie/doc_delivery.html'"></div>
+			</fieldset>
+			<fieldset title="4">
+			<legend>4. Выбор видов деятельности</legend>
+				<div ng-cloak  class="text-center cloak-loader">
+					<p>Идет загрузка... <i class="fa fa-spinner fa-pulse"></i></p>
+				</div>					
+				<div ng-cloak smb-okveds okveds = 'ie.okveds'></div>
+			</fieldset>
+			<fieldset title="5">
+				<legend>5. Система налогообложения</legend>
+				<div ng-cloak  class="text-center cloak-loader">
+					<p>Идет загрузка... <i class="fa fa-spinner fa-pulse"></i></p>
+				</div>				
+				<div smb-taxes model = "ie"></div>
+			</fieldset>
+			<fieldset title="6">
+				<legend>6. Открытие счета</legend>
+				<div ng-cloak class="text-center cloak-loader">
+					<p>Идет загрузка... <i class="fa fa-spinner fa-pulse"></i></p>
+				</div>
+				<div smb-bank-info model = 'ie' ng-cloak></div>
+			</fieldset>
+			<input type="submit" class="btn btn-primary stepy-finish"/>
+		</form>
+		<pre>{{ie | json}}</pre>
+	</div>
+</div>

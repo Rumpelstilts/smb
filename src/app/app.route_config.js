@@ -20,7 +20,7 @@
       })
       .state('register_ie', {
         url: '/registration/ie',
-        templateUrl: 'app/register/ie.html'
+        templateUrl: 'app/register/ie/ie.html'
       })
       .state('register_ie.address', {
         templateUrl: 'app/address/address.html'
