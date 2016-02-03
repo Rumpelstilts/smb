@@ -16,6 +16,7 @@
     vm.individual_foreign_passport
     vm.okveds
     vm.permission
+    vm.tax_data = []
     activate()
     // //////////////
     function activate () {

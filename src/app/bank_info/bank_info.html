@@ -1,0 +1,54 @@
+<div class="row">
+	<div class="col-md-12">
+		<div class="alert alert-info">
+			<p>
+				Мы подобрали для Вас оптимальные тарифные планы расчетно-кассового обслуживания.
+			</p>
+		</div>
+		<div class="form-group">
+			<div ng-repeat="tariff_info in vm.bank_info.tariffList">
+				<label><input type="radio" ng-model="vm.subject.bank_info.tariff" name="bankTariff" value="{{tariff_info.id}}"/> <span ng-bind = "tariff_info.title"></span></label>
+				<div class="row">
+					<div class="col-xs-12 col-sm-12 col-md-4 col-lg-3">
+						<img ng-src="{{tariff_info.img}}"/>
+					</div>
+					<div class="col-xs-12 col-sm-12 col-md-8 col-lg-9">
+						<p ng-bind-html="tariff_info.description"></p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="description" ng-bind-html="vm.bank_info.bankCommonInfo"></div>
+		<hr>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-12">
+		<h3>Выбор ближайшего отделения</h3>
+		<div class="row">
+			<div class="col-xs-12 col-sx-12 col-md-12 col-lg-12 form-group">
+				<label>Город для обслуживания:</label>
+				<select class="form-control" ng-model="vm.subject.bank_info.city" ng-change="vm.switch_city()" name="departmentCity">
+					<option ng-repeat="city in vm.department_cities" value="{{city}}">{{city}}</option>
+				</select>
+			</div>
+			<div class="col-xs-12 col-sx-12 col-md-12 col-lg-12 form-group">
+				<label>Удобное отделение:</label>
+				<select id="test" class="form-control" ng-model="vm.subject.bank_info.department" ng-change="vm.switch_department()" name="departmentName">
+					<option ng-repeat="departmentInfo in vm.city_departments track by $index" value="{{$index}}">{{departmentInfo.title}}</option>
+				</select>
+			</div>
+			<div class="col-xs-12 col-sx-12 col-md-12 col-lg-12 form-group">
+				<p ng-bind-html="vm.department_contact"></p>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-12">
+		<h3>Дополнительные возможности</h3>
+		<p>
+			После окончания регистрации вам будет предоставлен 1 месяц бесплатного доступа к сервису «<a target="_blank" href="http://moedelo.org">Мое дело</a>» для ведения бухгалтерского учета.
+		</p>
+	</div>
+</div>
