@@ -2,31 +2,31 @@
 	{
 		"id": "27.11",
 		"title": "Производство чугуна и доменных ферросплавов",
-		"children": false 
+		"has_children": false 
 	},
 	{
 		"id": "27.12",
 		"title": "Производство продуктов прямого восстановления железной руды",
-		"children": false 
+		"has_children": false 
 	},
 	{
 		"id": "27.13",
 		"title": "Производство ферросплавов, кроме доменных",
-		"children": false 
+		"has_children": false 
 	},
 	{
 		"id": "27.14",
 		"title": "Производство стали",
-		"children": false 
+		"has_children": false 
 	},
 	{
 		"id": "27.15",
 		"title": "Производство полуфабрикатов (заготовок) для переката",
-		"children": false 
+		"has_children": false 
 	},
 	{
 		"id": "27.16",
 		"title": "Производство стального проката горячекатаного и кованого",
-		"children": true 
+		"has_children": true 
 	}
 ]

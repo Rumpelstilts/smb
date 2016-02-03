@@ -2,11 +2,11 @@
 	{
 		"id": "05.01",
 		"title": "Рыболовство",
-		"children": true 
+		"has_children": true 
 	},
 	{
 		"id": "05.02",
 		"title": "Рыбоводство",
-		"children": true 
+		"has_children": true 
 	}
 ]

@@ -2,16 +2,16 @@
 	{
 		"id": "01.12.1",
 		"title": "Овощеводство",
-		"children": false 
+		"has_children": false 
 	},
 	{
 		"id": "01.12.2",
 		"title": "Декоративное садоводство и производство продукции питомников",
-		"children": false 
+		"has_children": false 
 	},
 	{
 		"id": "01.12.3",
 		"title": "Выращивание грибов, сбор лесных грибов и трюфелей",
-		"children": true 
+		"has_children": true 
 	}
 ]

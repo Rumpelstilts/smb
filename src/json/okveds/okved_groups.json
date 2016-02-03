@@ -2,16 +2,16 @@
 	{
 		"id": "0",
 		"title": "Группа 1",
-		"children": true 
+		"has_children": true 
 	},
 	{
 		"id": "1",
 		"title": "Группа 2",
-		"children": true 
+		"has_children": true 
 	},
 	{
 		"id": "2",
 		"title": "Группа 3",
-		"children": true 
+		"has_children": true 
 	}
 ]

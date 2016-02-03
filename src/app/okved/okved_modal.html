@@ -1,0 +1,52 @@
+<div class="modal-header">
+	<button class="close" ng-click="vm.cancel()">×</button>
+	<h4 class="modal-title">Виды деятельности</h4>
+</div>
+<div class="modal-body">
+	<ul>
+		<div class="text-center" ng-show='!vm.node' >
+			<p>Идет загрузка... <i class="fa fa-spinner fa-pulse"></i></p>
+		</div>
+		<li class = "okved_container" ng-repeat = "branch in vm.node" ng-cloak="">
+			<div ng-click = "vm.fetch_children(branch)">
+				<i class="okved_caret fa" ng-class="{'fa-caret-right': branch.collapsed, 'fa-caret-down': !branch.collapsed}"></i>
+				<a href="javascript:void(0)">
+					<span ng-bind = "branch.id"></span>
+					<span ng-bind = 'branch.title'></span>
+				</a>		    					
+			</div>			
+			<ul uib-collapse="branch.collapsed">
+				<div class="text-center" ng-show="!branch.children">
+					<p>Идет загрузка... <i class="fa fa-spinner fa-pulse"></i></p>
+				</div>
+				<li class = "okved_container" ng-repeat = "okved in branch.children" ng-include="okved.has_children + '.html'" ng-cloak></li>
+			</ul>
+		</li>
+	</ul>
+</div>
+<div class="modal-footer">
+	<button class="btn btn-primary" ng-click="vm.apply_changes()"><i class="fa fa-check-square-o"></i> Выбрать</button>
+</div>
+
+<script type="text/ng-template" id="true.html">
+	<div>
+		<i class="okved_caret fa" ng-class="{'fa-caret-right': okved.collapsed, 'fa-caret-down': !okved.collapsed}" ng-click = "vm.fetch_children(okved)"></i>
+    	<input type="checkbox" id = '{{okved.id}}' ng-model = 'okved.checked' ng-change="vm.check_element(okved)">	    
+	    <a href="javascript:void(0)" ng-click = "vm.fetch_children(okved)">
+	    	<span ng-bind = "okved.id"></span>
+			<span ng-bind = 'okved.title'></span>
+	    </a>	    
+	</div>
+	<ul uib-collapse="okved.collapsed">
+		<div class="text-center loader" ng-show = '!okved.children'>
+			<p>Идет загрузка... <i class="fa fa-spinner fa-pulse"></i></p>
+		</div>
+		<li class = "okved_container" ng-repeat = "okved in okved.children" ng-include="okved.has_children + '.html'"></li>
+	</ul>		
+</script>
+
+<script type="text/ng-template" id="false.html">
+	<input type="checkbox" id = '{{okved.id}}' ng-model = 'okved.checked' ng-change = "vm.check_element(okved)">
+	<span ng-bind = "okved.id"></span>
+	<span ng-bind = 'okved.title'></span>	
+</script>

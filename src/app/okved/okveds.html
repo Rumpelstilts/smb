@@ -10,7 +10,7 @@
 		</div>
 
 		<p>Для выбора основного ОКВЭДа кликните по нужной строке таблицы.</p>
-		<div class="alert alert-warning" ng-if = 'oc.okveds.length == 0'>
+		<div class="alert alert-warning" ng-if = 'oc.okveds.chosen.length == 0'>
 			<p>Вы не выбрали ни одного ОКВЭДа</p>
 		</div> 
 
@@ -23,7 +23,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr ng-repeat="okved in oc.okveds">
+				<tr ng-repeat="okved in oc.okveds.chosen">
 					<td ng-click="oc.set_main_okved(okved)">
 						<span ng-bind = 'okved.id'></span>&nbsp;<span class="label label-success" ng-class="{hidden: !okved.main}">!</span>
 					</td>
@@ -41,8 +41,7 @@
 				<tr>
 					<td colspan="4">
 						<div class="text-right">
-							<button class="btn btn-primary" ng-click="get_okveds_test_modal()"><i class="fa fa-plus"></i> test</button>
-							<button class="btn btn-primary" ng-click="get_okveds_modal()"><i class="fa fa-plus"></i> Добавить</button>
+							<button class="btn btn-primary" ng-click="oc.call_okved_modal()"><i class="fa fa-plus"></i> Добавить</button>
 						</div>
 					</td>
 				</tr>

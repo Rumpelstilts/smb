@@ -14,15 +14,21 @@
     vm.individual
     vm.individual_passport
     vm.individual_foreign_passport
+    vm.okveds
     vm.permission
     activate()
     // //////////////
     function activate () {
+      vm.contact_data = contact_data()
       vm.individual = individual()
       vm.individual_passport = passport.ru()
       vm.individual_foreign_passport = passport.foreign()
+      vm.okveds = {
+        groups: [],
+        tree: [],
+        chosen: []
+      }
       vm.permission = permission()
-      vm.contact_data = contact_data()
     }
   }
 })()
