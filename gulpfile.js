@@ -26,13 +26,25 @@ gulp.task('main_bower_files', function () {
         jquery: {
           ignore: true // same
         },
+        'jquery-validation': {
+          ignore: true // order of main files is important
+        },
         stepy: {
           main: [
             './lib/jquery.stepy.js'
           ]
         },
-        'jquery-validation': {
-          ignore: true // order of main files is important
+        'bootstrap-datepicker': {
+          main: [
+            './dist/js/bootstrap-datepicker.min.js',
+            './dist/css/bootstrap-datepicker3.min.css',
+            './dist/locales/bootstrap-datepicker.ru.min.js'
+          ]
+        },
+        'jquery.inputmask': {
+          main: [
+            './dist/min/jquery.inputmask.bundle.min.js'
+          ]
         },
         'suggestions-jquery': {
           main: [

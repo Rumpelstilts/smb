@@ -3,20 +3,20 @@
 		<label>Серия<sup class="required">*</sup>
 			<i class="fa fa-info-circle" popover-placement="top" uib-popover="Первые 4 цифры в коде вашего паспорта" popover-trigger="mouseenter"></i>
 		</label>
-		<input type="text" class="form-control" name="passportCode" ng-model="pc.passport.series" placeholder="Серия паспорта" ng-mask masktype="passportcode">
+		<input type="text" class="form-control" name="passportCode" ng-model="pc.passport.series" placeholder="Серия паспорта" smb-mask masktype="passportcode">
 	</div>
 	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 form-group">
 		<label>Номер<sup class="required">*</sup>
 			<i class="fa fa-info-circle" popover-placement="top" uib-popover="6 цифр за серией вашего паспорта" popover-trigger="mouseenter"></i>
 		</label>
-		<input type="text" class="form-control" name="passportNum" ng-model="pc.passport.number" placeholder="Номер паспорта" ng-mask masktype="passportnum">
+		<input type="text" class="form-control" name="passportNum" ng-model="pc.passport.number" placeholder="Номер паспорта" smb-mask masktype="passportnum">
 	</div>
 	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 form-group">
 		<label>Дата выдачи<sup class="required">*</sup>
 			<i class="fa fa-info-circle" popover-placement="top" uib-popover="Изменить дату выдачи можно по клику на заголовок календаря" popover-trigger="mouseenter"></i>
 		</label>
 		<div class="input-group">
-			<input type="text" name="passportDt" ng-model="pc.passport.date_of_issue" class="form-control" ng-mask masktype="dt">
+			<input type="text" smb-calendar name="passportDt" ng-model="pc.passport.date_of_issue" class="form-control" smb-mask masktype="dt">
 				<span class="input-group-addon">
 					<i class="fa fa-calendar"></i>
 				</span>
@@ -34,6 +34,6 @@
 		<label>Код подразделения<sup class="required">*</sup>
 			<i class="fa fa-info-circle" popover-placement="top" uib-popover="Код подразделения, выдавшего паспорт." popover-trigger="mouseenter"></i>
 		</label>
-		<input type="text" class="form-control" name="passportAgencyCode" ng-model="pc.passport.agency_code	" placeholder="Код подразделения" ng-mask masktype="passportagencycode">
+		<input type="text" class="form-control" name="passportAgencyCode" ng-model="pc.passport.agency_code	" placeholder="Код подразделения" smb-mask masktype="passportagencycode">
 	</div>
 </div>

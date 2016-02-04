@@ -25,7 +25,7 @@
 			<i class="fa fa-info-circle" popover-placement="top" uib-popover="Укажите дату выдачи, указанную в документе" popover-trigger="mouseenter"></i>
 		</label>
 		<div class="input-group">
-			<input type="text" name="permitDocumentDt" ng-model="fpc.permission.date_of_issue" class="form-control" ng-mask masktype="dt">
+			<input type="text" smb-calendar name="permitDocumentDt" ng-model="fpc.permission.date_of_issue" class="form-control" smb-mask masktype="dt">
 			<span class="input-group-addon">
 				<i class="fa fa-calendar"></i>
 			</span>
@@ -37,7 +37,7 @@
 			<i class="fa fa-info-circle" popover-placement="top" uib-popover="Укажите дату, до которой дествителен документ" popover-trigger="mouseenter"></i>
 		</label>
 		<div class="input-group">
-			<input type="text" name="permitDocumentExpiry" ng-model="fpc.permission.exp_date" class="form-control" ng-mask masktype="dt">
+			<input type="text" smb-calendar name="permitDocumentExpiry" ng-model="fpc.permission.exp_date" class="form-control" smb-mask masktype="dt">
 			<span class="input-group-addon">
 				<i class="fa fa-calendar"></i>
 			</span>

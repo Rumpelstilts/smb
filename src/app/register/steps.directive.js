@@ -27,7 +27,7 @@
         next: function (nextStepNumber) {
           console.log(scope)
           if (!element.valid()) {
-            scrollToError()
+            scroll_to_error()
             return false
           }
 
@@ -56,13 +56,22 @@
         },
         finish: function () {
           if (!element.valid()) {
-            scrollToError()
+            scroll_to_error()
             return false
           }
 
           alert('submit!')
         }
       })
+    }
+
+    function scroll_to_error () {
+      var firstErrorElement = $('fieldset').filter(':visible').find('div.form-group.has-error').eq(0)
+      if ($(firstErrorElement).length) {
+        $('html, body').animate({
+          scrollTop: firstErrorElement.offset().top
+        }, 500)
+      }
     }
   }
 })()
