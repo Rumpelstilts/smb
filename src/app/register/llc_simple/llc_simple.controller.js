@@ -22,8 +22,8 @@
 
     function add_founder () {
       vm.founders.push(vm.new_founder)
-      refresh_new_founder()
       vm.add_founder_collapsed = !vm.add_founder_collapsed
+      refresh_new_founder()
     }
 
     function refresh_new_founder () {
