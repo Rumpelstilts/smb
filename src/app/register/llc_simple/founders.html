@@ -18,7 +18,7 @@
 	</div>
 </div>
 
-<div class="row form-group" ng-repeat='founder in llc.founders track by $index' smb-founder model = 'founder' idx = '$index+1'></div>
+<div class="form-group" ng-repeat='founder in llc.founders track by $index' smb-founder model = 'founder' idx = '$index+1'></div>
 <div class="row">
 	<div class="col-md-12">
 		<a href="javascript:void(0)" class="btn btn-info pull-right" ng-click = 'llc.add_founder_collapsed = !llc.add_founder_collapsed'>Новый учредитель</a>
