@@ -17,12 +17,170 @@
     }
     return smbValidate
     function link (scope, element, attrs) {
-      var form_id = attrs['id']
+      // var form_id = attrs['id']
 
       var rules = {}
       var messages = {}
 
-      switch (form_id) {
+      switch (attrs['entity']) {
+        case 'citizenship':
+          rules = {
+            citizenshipCode: {
+              required: true
+            },
+            country: {
+              required: true
+            }
+          }
+          break
+        case 'contact_data':
+          rules = {
+            phone: {
+              required: true,
+              mobile: true
+            },
+            email: {
+              required: true,
+              email: true
+            }
+          }
+          break
+        case 'inn':
+          rules = {
+            inn: {
+              inn: true
+            }
+          }
+          break
+        case 'passport_ru':
+          rules = {
+            passportCode: {
+              required: true,
+              passportCode: true
+            },
+            passportNum: {
+              required: true,
+              passportNum: true
+            },
+            passportDt: {
+              required: true,
+              date: true,
+              passportDate: true
+            },
+            passportAgency: {
+              required: true
+            },
+            passportAgencyCode: {
+              required: true,
+              passportAgencyCode: true
+            }
+          }
+          break
+        case 'passport_foreign':
+          rules = {
+            passportNumForeigner: {
+              required: true
+            },
+            passportDtForeigner: {
+              required: true,
+              date: true,
+              passportDate: true
+            },
+            passportAgencyForeigner: {
+              required: true
+            }
+          }
+          break
+        case 'permission':
+          rules = {
+            permitDocumentType: {
+              required: true
+            },
+            permitDocumentNumber: {
+              required: true
+            },
+            permitDocumentDt: {
+              required: true,
+              date: true,
+              passportDate: true
+            },
+            permitDocumentExpiry: {
+              required: true,
+              date: true,
+              permitDocumentExpiry: true
+            },
+            permitDocumentAgency: {
+              required: true
+            }
+          }
+          break
+        case 'personal_data':
+          rules = {
+            lastname: {
+              required: true,
+              cyrillicName: true
+            },
+            name: {
+              required: true,
+              cyrillicName: true
+            },
+            middlename: {
+              required: true,
+              cyrillicName: true
+            },
+            birthPlace: {
+              required: true
+            },
+            birthDate: {
+              required: true,
+              date: true,
+              birthDate: true
+            },
+            sex: {
+              required: true
+            },
+            lastnameForeigner: {
+              required: true,
+              latinName: true
+            },
+            nameForeigner: {
+              required: true,
+              latinName: true
+            },
+            middlenameForeigner: {
+              latinName: true
+            }
+          }
+          break
+      }
+
+      var validator = element.validate({
+        submitHandler: function (form) {
+          console.log(form)
+        },
+        rules: rules,
+        messages: messages,
+        errorClass: 'has-error',
+        validClass: 'has-success',
+        errorPlacement: function (error, errorElement) {
+          $(errorElement).closest('.form-group').append(error)
+        },
+        highlight: function (element, errorClass, validClass) {
+          $(element).closest('.form-group').addClass(errorClass).removeClass(validClass)
+        },
+        unhighlight: function (element, errorClass, validClass) {
+          $(element).closest('.form-group').removeClass(errorClass).addClass(validClass)
+        }
+      })
+
+      // custom event on reset form
+      // element.on('reset_form', function () {
+      //   if ($(this).hasClass('reset_form')) {
+      //     $(this).validate().resetForm()
+      //     console.log('forms are reset')
+      //   }
+      // })
+      /*switch (form_id) {
         case 'user-login-form':
           rules = {
             email: {
@@ -283,23 +441,8 @@
             }
           }
           break
-      }
+      }*/
 
-      element.validate({
-        rules: rules,
-        messages: messages,
-        errorClass: 'has-error',
-        validClass: 'has-success',
-        errorPlacement: function (error, errorElement) {
-          $(errorElement).closest('.form-group').append(error)
-        },
-        highlight: function (element, errorClass, validClass) {
-          $(element).closest('.form-group').addClass(errorClass).removeClass(validClass)
-        },
-        unhighlight: function (element, errorClass, validClass) {
-          $(element).closest('.form-group').removeClass(errorClass).addClass(validClass)
-        }
-      })
     }
   }
 })()

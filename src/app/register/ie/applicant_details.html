@@ -1,9 +1,9 @@
 <h3>Персональные данные</h3>
-<form smb-citizenship model = 'ie.individual'></form>
-<form smb-person-data model = 'ie.individual'></form>
-<form smb-passport model = 'ie.individual_passport' ng-if='ie.individual.citizenship == "ru"'></form>
-<form smb-foreign-passport model = 'ie.individual_foreign_passport' ng-if='ie.individual.citizenship == "foreigner"'></form>
-<form smb-permission model = 'ie.permission' ng-if='ie.individual.citizenship == "foreigner"'></form>
-<form smb-contact-data model = 'ie.contact_data'></form>
-<form smb-inn model = 'ie' type = '"individual"' ng-if='ie.individual.citizenship == "ru"'></form>
+<form smb-citizenship smb-validate entity = 'citizenship' model  = 'ie.individual'></form>
+<form smb-person-data smb-validate entity = 'personal_data' model  = 'ie.individual'></form>
+<form smb-passport smb-validate entity = 'passport_ru' model = 'ie.individual_passport' ng-if='ie.individual.citizenship == "ru"'></form>
+<form smb-foreign-passport smb-validate entity = 'passport_foreign' model = 'ie.individual_foreign_passport' ng-if='ie.individual.citizenship == "foreigner"'></form>
+<form smb-permission smb-validate entity = 'permission' model = 'ie.permission' ng-if='ie.individual.citizenship == "foreigner"'></form>
+<form smb-contact-data smb-validate entity = 'contact_data' model  = 'ie.contact_data'></form>
+<form smb-inn smb-validate entity = 'inn' model = 'ie'  type = 'individual' ng-if='ie.individual.citizenship == "ru"'></form>
 

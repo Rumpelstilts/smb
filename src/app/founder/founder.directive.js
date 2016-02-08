@@ -8,7 +8,7 @@
   /* @ngInject */
   function smbFounder ( /*dependencies*/) {
     // Usage:
-    // <div smb-founder model = 'some_founder'></div>
+    // <div smb-founder model = 'some_founder' idx = 'founder_index'></div>
     // Creates:
     //
     var smbFounder = {
@@ -19,7 +19,8 @@
       templateUrl: 'app/founder/founder.html',
       restrict: 'A',
       scope: {
-        founder: '=model'
+        founder: '=model',
+        idx: '=idx'
       }
     }
     return smbFounder

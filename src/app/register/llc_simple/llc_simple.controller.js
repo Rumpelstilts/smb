@@ -1,4 +1,4 @@
-/*global angular*/
+/*global angular $*/
 ;(function () {
   'use strict'
   angular
@@ -32,6 +32,17 @@
         personal_data: individual(),
         passport: passport.ru()
       }
+      reset_forms()
+    // $('.new_founder').find('form').each(function () {
+    //   $(this).$setPristine()
+    // })
+    }
+
+    function reset_forms () {
+      var forms = $('.new_founder')
+      forms.find('label.has-error').remove()
+      forms.find('has-error').removeClass('has-error')
+      forms.find('has-success').removeClass('has-success')
     }
   }
 })()

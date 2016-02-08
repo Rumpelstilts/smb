@@ -59,12 +59,11 @@
         // return true
         },
         finish: function () {
-          if (!element.valid()) {
-            scroll_to_error()
-            return false
-          }
-
-          alert('submit!')
+          var valid = 0
+          $('form').each(function () {
+            valid += ($(this).valid()) ? 0 : 1
+          })
+          console.log(valid)
         }
       })
     }
