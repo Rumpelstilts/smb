@@ -41,8 +41,8 @@
     function reset_forms () {
       var forms = $('.new_founder')
       forms.find('label.has-error').remove()
-      forms.find('has-error').removeClass('has-error')
-      forms.find('has-success').removeClass('has-success')
+      forms.find('.has-error').removeClass('has-error')
+      forms.find('.has-success').removeClass('has-success')
     }
   }
 })()
