@@ -40,7 +40,8 @@
     activate()
 
     function activate () {
-      refresh_founder()
+      refresh_founder_personal_data()
+      refresh_founder_address()
     }
 
     function edit_founder_address () {
@@ -56,7 +57,11 @@
       }, 500)
     }
 
-    function refresh_founder () {
+    function refresh_founder_address () {
+      vm.address = 'Адрес'
+    }
+
+    function refresh_founder_personal_data () {
       if (vm.founder.personal_data.last_name.trim() === '' &&
         vm.founder.personal_data.name.trim() === '' &&
         vm.founder.personal_data.mid_name.trim() === ''
@@ -70,7 +75,7 @@
     }
 
     function save_founder_changes () {
-      refresh_founder()
+      refresh_founder_personal_data()
       vm.edit_info = !vm.edit_info
     }
   }
