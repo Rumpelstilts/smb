@@ -1,0 +1,34 @@
+<div class="row">
+	<div class="col-md-12">
+		<p>
+			Учредить ООО могут любые дееспособные и совершеннолетние граждане (кроме госслужащих). <br>
+			Общество может иметь от 1 до 50 учредителей.
+		</p>
+		<p>
+			<b>
+				При оплате части УК имуществом необходимо привлекать независимого оценщика
+			</b>
+		</p>
+		<h4>Учредители физические лица</h4>
+		<div class="alert alert-info" ng-if='llc.founders.length == 0'>
+			<p>
+				Пока не добавлено ни одного учредителя.
+			</p>
+		</div>
+	</div>
+</div>
+<div class="row form-group" ng-repeat='founder in llc.founders track by $index' smb-founder model = 'founder'></div>
+<div class="row">
+	<div class="col-md-12">
+		<a href="javascript:void(0)" class="btn btn-info pull-right" ng-click = 'llc.add_founder_collapsed = !llc.add_founder_collapsed'>Новый учредитель</a>
+	</div>
+</div>
+<div class="row" uib-collapse = 'llc.add_founder_collapsed'>
+	<div class="col-md-12">
+		<h4>Новый учредитель</h4>
+		<div smb-person-data model = 'llc.new_founder.personal_data'></div>
+		<div smb-passport model = 'llc.new_founder.passport'></div>
+		<div smb-contact-data model = 'llc.new_founder.contact_data'></div>
+		<a href="javascript:void(0)" class="btn btn-info pull-right" ng-click = 'llc.add_founder()' >Добавить</a>
+	</div>
+</div>

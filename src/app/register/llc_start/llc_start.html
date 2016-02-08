@@ -1,0 +1,23 @@
+<div class="row">
+	<div class="col-md-12">
+		<h1>Регистрация ООО</h1>
+		<div class="form-group">
+			<div>
+				<label><input type="radio" name="ltd_type" ng-model="vm.selected_route" value="0"> Упрощённая регистрация с одним учредителем</label>
+				<p>Компанию создаёт единственный учредитель, он же будет являться руководителем.</p>
+			</div>
+
+			<div>
+				<label><input type="radio" name="ltd_type" ng-model="vm.selected_route" value="1"> Больше возможностей для регистрации</label>
+				<p>Любое количество учредителей физических лиц в пределах 50 человек. Руководитель может быть выбран из числа учредителей или быть сторонним лицом.</p>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-12">
+		<div class="pull-right">
+			<a href="javascript:void(0)" ng-click = "vm.redirect()">Далее</a>
+		</div>
+	</div>
+</div>

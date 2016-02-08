@@ -8,7 +8,7 @@
   /* @ngInject */
   function smbMask ($compile, $injector) {
     // Usage:
-    //
+    // <input smb-mask>
     // Creates:
     //
     var smbMask = {

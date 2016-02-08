@@ -1,0 +1,47 @@
+<div class="row">
+	<div class="col-md-12">
+		<h1>РЕГИСТРАЦИЯ ОБЩЕСТВА С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ (ООО)</h1>
+		<p>
+			С помощью этой упрощенной формы вы сможете легко внести все данные и получить пакет документов для регистрации общества с ограниченной ответственностью.
+		</p>
+		<p>
+			Внимательно заполняйте поля. В случае необходимости обращайтесь к подсказкам —
+			они расположены рядом с каждым полем и обозначаются иконкой <i class="fa fa-info-circle"></i>.
+		</p>
+		<p>
+			* — обязательные для заполнения поля.
+		</p>
+	</div>
+</div>
+
+
+<div class="row">
+	<div class="col-md-12">
+		<form id="registration_llc" smb-steps smb-validate>
+			<!-- <fieldset title="1">
+				<legend>1. Наименование общества</legend>
+
+				<div ng-cloak class="text-center cloak-loader">
+					<p>Идет загрузка... <i class="fa fa-spinner fa-pulse"></i></p>
+				</div>
+				<div ng-cloak smb-llc-title model = 'llc.title'></div>
+			</fieldset>
+			<fieldset title="2">
+				<legend>2. Уставной капитал</legend>
+				<div ng-cloak class="text-center cloak-loader">
+					<p>Идет загрузка... <i class="fa fa-spinner fa-pulse"></i></p>
+				</div>
+				<div smb-charter-cap model='llc.charter_capital'></div>
+			</fieldset> -->
+			<fieldset title="3">
+				<legend>3. Сведения об учредителях</legend>
+				<div ng-cloak class="text-center cloak-loader">
+					<p>Идет загрузка... <i class="fa fa-spinner fa-pulse"></i></p>
+				</div>
+				<div ng-include="'app/register/llc_simple/founders.html'"></div>
+			</fieldset>
+			<input type="submit" class="btn btn-primary stepy-finish"/>
+		</form>
+		<pre>{{llc | json}}</pre>
+	</div>	
+</div>

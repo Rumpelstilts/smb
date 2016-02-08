@@ -12,7 +12,7 @@
 </div>
 <div class="row" ng-controller = "ie_register_controller as ie">
 	<div class="col-md-12">
-		<form id = "register_ie" smb-steps smb-validate>
+		<div id = "register_ie" smb-steps>
 			<fieldset title="1">
 				<legend>1. Данные заявителя</legend>
 				<div ng-cloak class="text-center cloak-loader">
@@ -56,7 +56,7 @@
 				<div smb-bank-info model = 'ie' ng-cloak></div>
 			</fieldset>
 			<input type="submit" class="btn btn-primary stepy-finish"/>
-		</form>
+		</div>
 		<pre>{{ie | json}}</pre>
 	</div>
 </div>

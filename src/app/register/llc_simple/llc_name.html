@@ -1,0 +1,57 @@
+<div class="row">
+	<div class="col-md-12">
+		<p>В поле свободного ввода имя вводится без кавычек. Полное и скоращённое наименования будут сформированы автоматически, при желании они могут быть вами отредактированы. Для этого необходимо нажать на кнопку справа от соответсвующего поля.</p>
+		<p>В документах будут указаны только полное и сокращённое наименования.</p>
+		<p><b>Важно!</b>В названии компании нельзя использовать указания на государства, их органы власти, общественные или правительственные организации, аморальные слова.</p>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-12">
+		<h4>Наименование на русском языке</h4>
+		<div class="form-group">
+			<label>
+				Только имя (свободный ввод)<sup class="required">*</sup>
+				<i class="fa fa-info-circle" popover-placement="top" uib-popover="Например: Айсберг" popover-trigger="mouseenter"></i>
+			</label>
+			<input type="text" name="email" ng-change = "vm.update_name()" ng-model="vm.title.name" class="form-control">
+		</div>
+		<div class="form-group">
+			<label>
+				Полное наименование<sup class="required">*</sup>
+				<i class="fa fa-info-circle" popover-placement="top" uib-popover='Например: Общество с ограниченной ответсвенностью "Айсберг"' popover-trigger="mouseenter"></i>
+			</label>
+			<input type="text" name="email" ng-model="vm.title.name_full" class="form-control">
+		</div>
+		<div class="form-group">
+			<label>
+				Сокращенное наименованиее<sup class="required">*</sup>
+				<i class="fa fa-info-circle" popover-placement="top" uib-popover='Например: ООО "Айсберг"' popover-trigger="mouseenter"></i>
+			</label>
+			<input type="text" name="email" ng-model="vm.title.name_short" class="form-control">
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-12">
+		<label><input type="checkbox" name="ltd_type" ng-model="english_name"> Я хочу указать название на английском языке</label>
+	</div>
+</div>
+<div class="row" ng-show = "english_name">
+	<div class="col-md-12">
+		<div class="form-group">
+			<label>
+				Полное наименование компании на английском языке<sup class="required">*</sup>
+				<i class="fa fa-info-circle" popover-placement="top" uib-popover='Например: Iceberg Limited liability company' popover-trigger="mouseenter"></i>
+			</label>
+			<input type="text" name="email" ng-model="vm.title.english.name_full" class="form-control">
+		</div>
+		<div class="form-group">
+			<label>
+				Сокращенное наименование компании на английском языке<sup class="required">*</sup>
+				<i class="fa fa-info-circle" popover-placement="top" uib-popover='Iceberg Llc' popover-trigger="mouseenter"></i>
+			</label>
+			<input type="text" name="email"  ng-model="vm.title.english.name_short" class="form-control">
+		</div>
+
+	</div>
+</div>

@@ -8,15 +8,15 @@
   function config ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('landing')
     $stateProvider
+      .state('landing', {
+        url: '/landing',
+        templateUrl: 'app/static/landing.html'
+      })
       .state('login', {
         url: '/login',
         templateUrl: 'app/user/login/login.html',
         controller: 'user_login_controller',
         controllerAs: 'login'
-      })
-      .state('landing', {
-        url: '/landing',
-        templateUrl: 'app/static/landing.html'
       })
       .state('register_ie', {
         url: '/registration/ie',
@@ -24,6 +24,18 @@
       })
       .state('register_ie.address', {
         templateUrl: 'app/address/address.html'
+      })
+      .state('register_llc', {
+        url: '/registration/llc',
+        templateUrl: 'app/register/llc_start/llc_start.html',
+        controller: 'llc_ctart_controller',
+        controllerAs: 'vm'
+      })
+      .state('register_llc_simple', {
+        url: '/registration/llc/simple',
+        templateUrl: 'app/register/llc_simple/llc_simple.html',
+        controller: 'llc_simple_controller',
+        controllerAs: 'llc'
       })
 
       // $stateProvider
