@@ -8,15 +8,29 @@
 				<a ng-class = "{'text-success': vm.name_valid, 'text-danger': !vm.name_valid }" href="javascript:(0)" ng-bind = 'vm.name' ng-click = 'vm.edit_founder_info()'></a>
 			</div>
 			<div class="col-md-4">
-				<a href="javascript:(0)" ng-bind = 'vm.address' ng-click = 'vm.edit_founder_address()'></a>
+				<a href="javascript:(0)" ng-class = "{'text-success': vm.address_valid, 'text-danger': !vm.address_valid }" ng-bind = 'vm.address' ng-click = 'vm.edit_founder_address()'></a>
 			</div>
 			<div class="col-md-4">
-				<input type="text" ng-model = 'vm.share' class="form-control">
+				<div ng-switch = 'vm.share_type'>
+					<input ng-switch-when='0' type="text" ng-model = 'vm.charter_share' class="form-control">
+					<input ng-switch-when='1' type="text" ng-model = 'vm.charter_share' class="form-control">
+					<div ng-switch-when='2' class="input-group">
+						<input type="text" ng-model = 'vm.numerator' class="form-control">
+						<span class="input-group-addon">/</span>
+						<input type="text" ng-model = 'vm.denumerator.val' class="form-control">
+					</div>
+				</div>
+				
 			</div>
 		</div>
 	</div>
 	<div class="col-sm-1 col-xs-3 text-center">
 		<button type="button" class="btn btn-default" ng-click = 'vm.call_parent()' >1</button>
+	</div>
+</div>
+<div class="row"> 
+	<div class="col-md-12">
+		<p><b>Номинальная доля в УК:&nbsp</b><span>Не определена</span></p>
 	</div>
 </div>
 
@@ -25,7 +39,6 @@
 		<form name = 'new_founder_data' smb-validate entity = 'personal_data' smb-person-data model = 'vm.founder.personal_data'></form>
 		<form name = 'new_founder_passport' smb-validate entity = 'passport_ru' smb-passport model = 'vm.founder.passport'></form>
 		<form name = 'new_founder_contact' smb-validate entity = 'contact_data' smb-contact-data model = 'vm.founder.contact_data'></form>
-
 		<a href="javascript:void(0)" class="btn btn-info pull-right" ng-click = 'vm.save_founder_changes()'>Скрыть меню</a>	
 	</div>		
 </div>
@@ -40,9 +53,10 @@
 			</div>
 		</div>
 	</div>
-	<div class="row">
-		<div class="col-md-12" smb-custom-address model = 'vm.founder.address'  ng-show="custom_input"></div>		
+	<div class="founder_address">
+		<form smb-validate entity = 'address' smb-custom-address model = 'vm.founder.address'  ng-show="custom_input"></form>
 	</div>
+			
 	<div class="row">
 		<div class="col-md-12">
 			<div smb-y-map id="founder_{{vm.idx}}" coords = 'vm.founder.address_coords' style = "width: 100%; height: 500px" class="form-group"></div>

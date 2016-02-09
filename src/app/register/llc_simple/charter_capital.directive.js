@@ -25,17 +25,10 @@
     function link (scope, element, attrs) {
     }
   }
+  Controller.$inject = ['charter_capital']
   /* @ngInject */
-  function Controller () {
+  function Controller (charter_capital) {
     var vm = this
-    vm.charter_cap.share_type = ''
-    vm.charter_cap.amount = ''
-
-    activate()
-
-    function activate () {
-      vm.charter_cap.share_type = 0
-      vm.charter_cap.amount = 10000
-    }
+    vm.charter_cap = charter_capital
   }
 })()

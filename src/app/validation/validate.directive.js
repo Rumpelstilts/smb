@@ -23,6 +23,25 @@
       var messages = {}
 
       switch (attrs['entity']) {
+        case 'address':
+          rules = {
+            region: {
+              required: true
+            },
+            city: {
+              required: true
+            },
+            street: {
+              required: true
+            },
+            building: {
+              required: true
+            },
+            building_type: {
+              required: true
+            }
+          }
+          break
         case 'citizenship':
           rules = {
             citizenshipCode: {
