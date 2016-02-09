@@ -27,11 +27,13 @@
     function link (scope, element, attrs) {
     }
   }
+  Controller.$inject = ['delete_founder_factory']
   /* @ngInject */
-  function Controller () {
+  function Controller (delete_founder_factory) {
     var vm = this
     vm.address
     vm.address_valid
+    vm.call_parent = call_parent
     vm.edit_address = true
     vm.edit_info = true
     vm.edit_founder_address = edit_founder_address
@@ -46,6 +48,10 @@
     function activate () {
       refresh_founder_personal_data()
       vm.address = 'Адрес'
+    }
+
+    function call_parent () {
+      delete_founder_factory.update(vm.idx, vm.name)
     }
 
     function edit_founder_address () {

@@ -12,10 +12,10 @@
     vm.delete_okved = delete_okved
     vm.delete_idx // index of deleting element
     vm.okveds
-    acrivate()
+    activate()
     // //////////////
 
-    function acrivate () {
+    function activate () {
       vm.okveds = okved_data.okveds
       vm.delete_idx = okved_data.idx
     }
