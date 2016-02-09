@@ -31,11 +31,14 @@
   function Controller () {
     var vm = this
     vm.address
+    vm.address_valid
     vm.edit_address = true
     vm.edit_info = true
     vm.edit_founder_address = edit_founder_address
     vm.edit_founder_info = edit_founder_info
+    vm.founder.address_coords = []
     vm.name
+    vm.name_valid
     vm.save_founder_address_changes = save_founder_address_changes
     vm.save_founder_changes = save_founder_changes
     activate()
@@ -62,7 +65,7 @@
       var a = vm.founder.address
       vm.address = universal_trim(a.city) + ' ' + universal_trim(a.street) + ' ' + universal_trim(a.buildingType) + ' ' + universal_trim(a.building) + ' ' +
         universal_trim(a.housingType) + ' ' + universal_trim(a.housing) + ' ' + universal_trim(a.flatType) + ' ' + universal_trim(a.flat)
-      if (vm.address === '') {
+      if (vm.address.trim() === '') {
         vm.address = 'Адрес'
       }
     }
@@ -82,11 +85,23 @@
     }
     function save_founder_changes () {
       refresh_founder_personal_data()
+      vm.name_valid = validate_forms('founder_info')
       vm.edit_info = !vm.edit_info
     }
 
     function universal_trim (val) {
       return (val) ? val.trim() : ''
+    }
+
+    // returns amount of invalid forms; if res == 0, form is valid
+    function validate_forms (container) {
+      var valid = 0
+      $('.' + container).find('form').each(function () {
+        if (!$(this).valid()) {
+          valid++
+        }
+      })
+      return (valid === 0)
     }
   }
 })()
