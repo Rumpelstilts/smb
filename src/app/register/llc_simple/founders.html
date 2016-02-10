@@ -33,3 +33,36 @@
 		<a href="javascript:void(0)" class="btn btn-info pull-right" ng-click = 'llc.add_founder()'>Добавить</a>
 	</div>
 </div>
+<script type="text/ng-template" id="founder_address.html">
+	<div class="row">
+		<div class="col-md-12">
+			<input type="text" class="form-control" placeholder="Начните вводить адрес..." smb-autocomplete suggestiontype="address" model = 'vm.founder' ng-disabled="custom_input">
+			<div>
+				<label class="checkbox-inline"><input type="checkbox" data-ng-model="custom_input"> Ввести данные вручную</label>
+				<p class="text-muted"><em>Если вы не нашли свой адрес в подсказках, заполните поля вручную.</em></p>			
+			</div>
+		</div>
+	</div>
+	<div>
+		<form smb-validate entity = 'address' smb-custom-address model = 'vm.founder.address'  ng-show="custom_input"></form>
+	</div>
+			
+	<div class="row">
+		<div class="col-md-12">
+			<div smb-y-map id="founder_{{vm.idx}}" coords = 'vm.founder.address_coords' style = "width: 100%; height: 500px" class="form-group"></div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<a href="javascript:void(0)" class="btn btn-info pull-right" ng-click = 'vm.save_founder_address_changes()'>Скрыть меню</a>	
+		</div>
+	</div>
+</script>
+<script type="text/ng-template" id="founder_info.html">
+	<div class="col-md-12">
+		<form name = 'new_founder_data' smb-validate entity = 'personal_data' smb-person-data model = 'vm.founder.personal_data'></form>
+		<form name = 'new_founder_passport' smb-validate entity = 'passport_ru' smb-passport model = 'vm.founder.passport'></form>
+		<form name = 'new_founder_contact' smb-validate entity = 'contact_data' smb-contact-data model = 'vm.founder.contact_data'></form>
+		<a href="javascript:void(0)" class="btn btn-info pull-right" ng-click = 'vm.save_founder_changes()'>Скрыть меню</a>	
+	</div>
+</script>

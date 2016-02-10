@@ -4,9 +4,9 @@
   angular
     .module('smb')
     .directive('smbFounder', smbFounder)
-  // smbFounder.$inject = ['dependencies']
+  smbFounder.$inject = ['$templateCache', '$compile']
   /* @ngInject */
-  function smbFounder ( /*dependencies*/) {
+  function smbFounder ($templateCache, $compile) {
     // Usage:
     // <div smb-founder model = 'some_founder' idx = 'founder_index'></div>
     // Creates:
@@ -25,6 +25,45 @@
     }
     return smbFounder
     function link (scope, element, attrs) {
+      var t
+      var linkFn
+      var content
+
+      scope.vm.info_collapse_handler = function () {
+        element.find('.founder_info').empty()
+      }
+
+      scope.vm.address_collapse_handler = function () {
+        element.find('.founder_address').empty()
+      }
+
+      scope.vm.edit_founder_info = function () {
+        if (!scope.vm.edit_info) {
+          if ($('.founder_info:empty')) {
+            scope.vm.edit_info = !scope.vm.edit_info
+          }
+        } else {
+          t = $templateCache.get('founder_info.html')
+          linkFn = $compile(t)
+          content = linkFn(scope)
+          element.find('.founder_info').append(content)
+          scope.vm.edit_info = !scope.vm.edit_info
+        }
+      }
+
+      scope.vm.edit_founder_address = function () {
+        if (!scope.vm.edit_address) {
+          if ($('.founder_address:empty')) {
+            scope.vm.edit_address = !scope.vm.edit_address
+          }
+        } else {
+          t = $templateCache.get('founder_address.html')
+          linkFn = $compile(t)
+          content = linkFn(scope)
+          element.find('.founder_address').append(content)
+          scope.vm.edit_address = !scope.vm.edit_address
+        }
+      }
     }
   }
   Controller.$inject = ['delete_founder_factory', 'charter_capital', '$scope']
@@ -41,8 +80,8 @@
     }
     vm.edit_address = true
     vm.edit_info = true
-    vm.edit_founder_address = edit_founder_address
-    vm.edit_founder_info = edit_founder_info
+    // vm.edit_founder_address = edit_founder_address
+    // vm.edit_founder_info = edit_founder_info
     vm.founder.address_coords = []
     vm.fraction
     vm.name
@@ -85,21 +124,21 @@
       }
     }
 
-    function edit_founder_address () {
-      vm.edit_address = !vm.edit_address
-      setTimeout(function () {
-        $('.founder_info').find('form').each(function () {
-          $(this).valid()
-        })
-      }, 500)
-    }
+    // function edit_founder_address () {
+    //   vm.edit_address = !vm.edit_address
+    // // setTimeout(function () {
+    // //   $('.founder_info').find('form').each(function () {
+    // //     $(this).valid()
+    // //   })
+    // // }, 500)
+    // }
 
-    function edit_founder_info () {
-      vm.edit_info = !vm.edit_info
-      setTimeout(function () {
-        $('.founder_address').find('form').valid()
-      }, 500)
-    }
+    // function edit_founder_info () {
+    //   vm.edit_info = !vm.edit_info
+    // // setTimeout(function () {
+    // //   $('.founder_address').find('form').valid()
+    // // }, 500)
+    // }
 
     function refresh_founder_address () {
       var a = vm.founder.address
