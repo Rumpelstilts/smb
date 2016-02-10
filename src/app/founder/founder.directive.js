@@ -27,9 +27,9 @@
     function link (scope, element, attrs) {
     }
   }
-  Controller.$inject = ['delete_founder_factory', 'charter_capital']
+  Controller.$inject = ['delete_founder_factory', 'charter_capital', '$scope']
   /* @ngInject */
-  function Controller (delete_founder_factory, charter_capital) {
+  function Controller (delete_founder_factory, charter_capital, $scope) {
     var vm = this
     vm.address
     vm.address_valid
@@ -58,6 +58,10 @@
       vm.address = 'Адрес не указан'
       console.log(charter_capital)
     }
+
+    $scope.$on('charter_capital:updated', function () {
+      vm.share_type = charter_capital.share_type
+    })
 
     function call_parent () {
       delete_founder_factory.update(vm.idx, vm.name)

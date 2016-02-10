@@ -11,7 +11,7 @@
 				<a href="javascript:(0)" ng-class = "{'text-success': vm.address_valid, 'text-danger': !vm.address_valid }" ng-bind = 'vm.address' ng-click = 'vm.edit_founder_address()'></a>
 			</div>
 			<div class="col-md-4">
-				<div ng-switch = 'vm.share_type'>
+				<div ng-switch on = 'vm.share_type'>
 					<input ng-switch-when='0' type="text" ng-model = 'vm.charter_share' class="form-control">
 					<input ng-switch-when='1' type="text" ng-model = 'vm.charter_share' class="form-control">
 					<div ng-switch-when='2' class="input-group">
@@ -31,6 +31,7 @@
 <div class="row"> 
 	<div class="col-md-12">
 		<p><b>Номинальная доля в УК:&nbsp</b><span>Не определена</span></p>
+		<p ng-bind = 'vm.share_type'></p>
 	</div>
 </div>
 

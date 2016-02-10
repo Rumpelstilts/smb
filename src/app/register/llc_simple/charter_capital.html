@@ -26,19 +26,19 @@
 		<div class="form-group">
 			<div>
 				<label>
-					<input type="radio" name="doc_delivery" ng-model="vm.charter_cap.share_type" value="0"/> В процентах
+					<input type="radio" name="doc_delivery" ng-model="vm.charter_cap.share_type" value="0" ng-change = 'vm.charter_cap.update()'/> В процентах
 				</label>
 				<i class="fa fa-info-circle" popover-placement="top" uib-popover="Такой тип долей является наиболее распространённым." popover-trigger="mouseenter"></i>
 			</div>
 			<div>
 				<label>
-					<input type="radio" name="doc_delivery" ng-model="vm.charter_cap.share_type" value="1"/> В десятичных дробях 
+					<input type="radio" name="doc_delivery" ng-model="vm.charter_cap.share_type" value="1" ng-change = 'vm.charter_cap.update()'/> В десятичных дробях 
 				</label>
 				<i class="fa fa-info-circle" popover-placement="top" uib-popover="Такой тип долей практически аналогичен процентному указанию. Используется реже всего." popover-trigger="mouseenter"></i>
 			</div>
 			<div>
 				<label>
-					<input type="radio" name="doc_delivery" ng-model="vm.charter_cap.share_type" value="2"/> В простых дробях
+					<input type="radio" name="doc_delivery" ng-model="vm.charter_cap.share_type" value="2" ng-change = 'vm.charter_cap.update()'/> В простых дробях
 				</label>
 				<i class="fa fa-info-circle" popover-placement="top" uib-popover="Используется чаще всего для определения трудноделимых частей, например, для трёх учредителей с равными долями в 1/3" popover-trigger="mouseenter"></i>
 			</div>
