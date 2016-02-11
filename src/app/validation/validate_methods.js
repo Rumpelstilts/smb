@@ -1,3 +1,4 @@
+/*global $*/
 $.validator.addMethod('email', function (value) {
   return /^([a-zA-Z0-9_.+-])+@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/.test(value)
 })
@@ -73,19 +74,62 @@ $.validator.addMethod('permitDocumentExpiry', function (value, element) {
   && (permitDocumentExpiryTimestamp > currentTime)
 })
 
+// charter capital shares
+$.validator.addMethod('positive_and_number', function (value) {
+  value = value.replace(/,/g, '.')
+  var res = parseFloat(value)
+  return (!isNaN(res) && res > 0)
+})
+
+$.validator.addMethod('percent', function (value) {
+  value = value.replace(/,/g, '.')
+  var res = parseFloat(value)
+  return (res <= 100)
+})
+
+$.validator.addMethod('integer', function (value) {
+  value = value.replace(/,/g, '.')
+  var res = parseFloat(value)
+  return ((res % 1) === 0)
+})
+
+$.validator.addMethod('two_digits_fractional', function (value) {
+  value = value.replace(/,/g, '.')
+  var remainder = value.split('.')
+  return (remainder[1].length <= 2)
+})
+
+$.validator.addMethod('simple_fraction', function (value) {
+  var sum = 0
+  var fractions = []
+  var common_den = 1
+  $('.simple_fraction').each(function () {
+    var num = parseFloat($(this).find('.numerator').val().replace(/,/g, '.'))
+    var den = parseFloat($(this).find('.denumerator').val().replace(/,/g, '.')) | 1
+    fractions.push({num: num, den: den})
+    common_den *= den
+  })
+
+  for (var i = 0; i < fractions.length; i++) {
+    sum += fractions[i].num * (common_den / fractions[i].den)
+  }
+
+  return ((sum / common_den) === 1)
+})
+
 $.validator.addMethod('notExist', function (value, element) {
   return true
 // todo uncomment after server-side
 // $.ajax({
-//	url: 'checkUserRegistered.do',
-//	data: {
-//		email: value
-//	},
-//	type: 'POST',
-//	dataType: 'text',
-//	async: false
+//  url: 'checkUserRegistered.do',
+//  data: {
+//    email: value
+//  },
+//  type: 'POST',
+//  dataType: 'text',
+//  async: false
 // }).done(function (result) {
-//	return result == 'user_exists'
+//  return result == 'user_exists'
 // })
 })
 

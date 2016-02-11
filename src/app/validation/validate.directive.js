@@ -171,26 +171,82 @@
             }
           }
           break
+        case 'share':
+          rules = {
+            percent: {
+              required: true,
+              positive_and_number: true,
+              percent: true,
+              two_digits_fractional: true
+            },
+            decimal_fraction: {
+              required: true,
+              positive_and_number: true,
+              two_digits_fractional: true,
+            },
+            numerator: {
+              required: true,
+              positive_and_number: true,
+              integer: true,
+              simple_fraction: true
+            },
+            denumerator: {
+              required: true,
+              positive_and_number: true,
+              integer: true,
+              simple_fraction: true
+            }
+          }
+          break
       }
 
-      var validator = element.validate({
-        submitHandler: function (form) {
-          console.log(form)
-        },
-        rules: rules,
-        messages: messages,
-        errorClass: 'has-error',
-        validClass: 'has-success',
-        errorPlacement: function (error, errorElement) {
-          $(errorElement).closest('.form-group').append(error)
-        },
-        highlight: function (element, errorClass, validClass) {
-          $(element).closest('.form-group').addClass(errorClass).removeClass(validClass)
-        },
-        unhighlight: function (element, errorClass, validClass) {
-          $(element).closest('.form-group').removeClass(errorClass).addClass(validClass)
-        }
-      })
+      scope.tooltip = {}
+      scope.enable_tooltip = {}
+      if (attrs['tlp']) {
+        element.validate({
+          submitHandler: function (form) {
+            console.log(form)
+          },
+          rules: rules,
+          messages: messages,
+          errorClass: 'has-error',
+          validClass: 'has-success',
+          errorPlacement: function (error, errorElement) {
+            var idx = $(errorElement).attr('name')
+            scope.tooltip[idx] = $(error).html()
+          },
+          highlight: function (element, errorClass, validClass) {
+            $(element).closest('.input-wrapper').addClass(errorClass).removeClass(validClass)
+            var idx = $(element).attr('name')
+            scope.enable_tooltip[idx] = true
+          },
+          unhighlight: function (element, errorClass, validClass) {
+            $(element).closest('.input-wrapper').removeClass(errorClass).addClass(validClass)
+            var idx = $(element).attr('name')
+            scope.enable_tooltip[idx] = false
+          }
+        })
+
+      } else {
+        element.validate({
+          submitHandler: function (form) {
+            console.log(form)
+          },
+          rules: rules,
+          messages: messages,
+          errorClass: 'has-error',
+          validClass: 'has-success',
+          errorPlacement: function (error, errorElement) {
+            $(errorElement).closest('.form-group').append(error)
+          },
+          highlight: function (element, errorClass, validClass) {
+            $(element).closest('.form-group').addClass(errorClass).removeClass(validClass)
+          },
+          unhighlight: function (element, errorClass, validClass) {
+            $(element).closest('.form-group').removeClass(errorClass).addClass(validClass)
+          }
+        })
+      }
 
       // custom event on reset form
       // element.on('reset_form', function () {

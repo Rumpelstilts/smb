@@ -11,16 +11,21 @@
 				<a href="javascript:(0)" ng-class = "{'text-success': vm.address_valid, 'text-danger': !vm.address_valid }" ng-bind = 'vm.address' ng-click = 'vm.edit_founder_address()'></a>
 			</div>
 			<div class="col-md-4">
-				<div ng-switch on = 'vm.share_type'>
-					<input ng-switch-when='0' type="text" ng-model = 'vm.charter_share' class="form-control">
-					<input ng-switch-when='1' type="text" ng-model = 'vm.charter_share' class="form-control">
-					<div ng-switch-when='2' class="input-group">
-						<input type="text" ng-model = 'vm.numerator' class="form-control">
-						<span class="input-group-addon">/</span>
-						<input type="text" ng-model = 'vm.denumerator.val' class="form-control">
+				<form ng-switch on = 'vm.share_type' smb-validate entity = 'share' tlp = 'true'>
+					<div class="input-wrapper" ng-switch-when='0'>
+						<input name = 'percent' required  type="text" ng-model = 'vm.charter_share' class="form-control" uib-tooltip='{{tooltip.percent}}' tooltip-enable='{{enable_tooltip.percent}}' >
 					</div>
-				</div>
-				
+					<div class="input-wrapper" ng-switch-when='1'>
+						<input name = 'decimal_fraction' required type="text" ng-model = 'vm.charter_share' class="form-control" uib-tooltip='{{tooltip.decimal_fraction}}' tooltip-enable='{{enable_tooltip.decimal_fraction}}'>
+					</div>
+					<div class="input-wrapper simple_fraction" ng-switch-when='2'>
+						<div class="input-group">
+							<input type="text" name = 'numerator' required ng-model = 'vm.numerator' class="form-control numerator" uib-tooltip='{{tooltip.numerator}}' tooltip-enable='{{enable_tooltip.numerator}}'>
+							<span class="input-group-addon">/</span>
+							<input name = 'denumerator' required type="text" ng-model = 'vm.denumerator' class="form-control denumerator" uib-tooltip='{{tooltip.denumerator}}' tooltip-enable='{{enable_tooltip.denumerator}}'>
+						</div>
+					</div>	
+				</form>				
 			</div>
 		</div>
 	</div>
@@ -34,10 +39,10 @@
 	</div>
 </div>
 
-<div class="row founder_info form-group" uib-collapse = 'vm.edit_info' collapsed = 'vm.info_collapse_handler()' >		
+<div class="row founder_info form-group" uib-collapse = 'vm.edit_info' collapsed = 'vm.info_collapse_handler()' expanded = 'vm.validate_forms("founder_info")'>		
 </div>
 
-<div class="form-group founder_address" uib-collapse = 'vm.edit_address' collapsed = 'vm.address_collapse_handler()'>	
+<div class="form-group founder_address" uib-collapse = 'vm.edit_address' collapsed = 'vm.address_collapse_handler()' expanded = 'vm.validate_forms("founder_address")'>	
 </div>
 
 

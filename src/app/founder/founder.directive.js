@@ -74,10 +74,7 @@
     vm.address_valid
     vm.call_parent = call_parent
     vm.charter_share
-    vm.denumerator = { // in case of fracional charter charter_capital
-      val: '',
-      valid: 'true'
-    }
+    vm.denumerator = ''
     vm.edit_address = true
     vm.edit_info = true
     // vm.edit_founder_address = edit_founder_address
@@ -86,10 +83,11 @@
     vm.fraction
     vm.name
     vm.name_valid
-    vm.numerator = '' // in case of fracional charter capital
+    vm.numerator = ''
     vm.save_founder_address_changes = save_founder_address_changes
     vm.save_founder_changes = save_founder_changes
     vm.share_type = charter_capital.share_type
+    vm.validate_forms = validate_forms
     activate()
 
     function activate () {
@@ -100,6 +98,7 @@
 
     $scope.$on('charter_capital:updated', function () {
       vm.share_type = charter_capital.share_type
+      vm.charter_share = ''
     })
 
     function call_parent () {
@@ -123,22 +122,6 @@
           break
       }
     }
-
-    // function edit_founder_address () {
-    //   vm.edit_address = !vm.edit_address
-    // // setTimeout(function () {
-    // //   $('.founder_info').find('form').each(function () {
-    // //     $(this).valid()
-    // //   })
-    // // }, 500)
-    // }
-
-    // function edit_founder_info () {
-    //   vm.edit_info = !vm.edit_info
-    // // setTimeout(function () {
-    // //   $('.founder_address').find('form').valid()
-    // // }, 500)
-    // }
 
     function refresh_founder_address () {
       var a = vm.founder.address
@@ -182,6 +165,14 @@
         }
       })
       return (invalid === 0)
+    }
+
+    function validate_simple_fraction () {
+      if (vm.numerator.val > vm.denumerator.val) {
+        vm.denumerator.valid = false
+        return 'Знаменатель должен быть меньше числителя'
+      }
+
     }
   }
 })()
