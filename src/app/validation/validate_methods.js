@@ -82,9 +82,27 @@ $.validator.addMethod('positive_and_number', function (value) {
 })
 
 $.validator.addMethod('percent', function (value) {
-  value = value.replace(/,/g, '.')
-  var res = parseFloat(value)
-  return (res <= 100)
+  var res = 0
+  $('.percent').each(function () {
+    var current = parseFloat($(this).val().replace(/,/g, '.'))
+    if (isNaN(current)) {
+      current = 100
+    }
+    res += current
+  })
+  return (res === 100)
+})
+
+$.validator.addMethod('decimal_fraction', function (value) {
+  var res = 0
+  $('.decimal_fraction').each(function () {
+    var current = parseFloat($(this).val().replace(/,/g, '.'))
+    if (isNaN(current)) {
+      current = 1
+    }
+    res += current
+  })
+  return (res === 1)
 })
 
 $.validator.addMethod('integer', function (value) {
@@ -96,7 +114,7 @@ $.validator.addMethod('integer', function (value) {
 $.validator.addMethod('two_digits_fractional', function (value) {
   value = value.replace(/,/g, '.')
   var remainder = value.split('.')
-  return (remainder[1].length <= 2)
+  return remainder[1] ? (remainder[1].length <= 2) : true
 })
 
 $.validator.addMethod('simple_fraction', function (value) {
@@ -105,7 +123,13 @@ $.validator.addMethod('simple_fraction', function (value) {
   var common_den = 1
   $('.simple_fraction').each(function () {
     var num = parseFloat($(this).find('.numerator').val().replace(/,/g, '.'))
-    var den = parseFloat($(this).find('.denumerator').val().replace(/,/g, '.')) | 1
+    var den = parseFloat($(this).find('.denumerator').val().replace(/,/g, '.'))
+    if (isNaN(den)) {
+      den = 1
+    }
+    if (isNaN(num)) {
+      num = 1
+    }
     fractions.push({num: num, den: den})
     common_den *= den
   })
@@ -115,6 +139,56 @@ $.validator.addMethod('simple_fraction', function (value) {
   }
 
   return ((sum / common_den) === 1)
+})
+
+$.validator.addMethod('simpleFraction1', function (value, element) {
+  var sum = 0
+  var result = false
+  var empty = false
+  var num = $(element).closest('.input-group').find('.numerator').val()
+  var den = $(element).closest('.input-group').find('.denominator').val()
+  if (!num || !den) {
+    empty = true
+  } else {
+    sum = parseFloat(num) / parseFloat(den)
+  }
+  if (empty || (sum <= 1 && !empty)) {
+    result = true
+  }
+  return result
+})
+
+$.validator.addMethod('fundPartSimpleFraction', function (value, element) {
+  var sum = 0
+  var result = false
+  var empty = false
+  var inputs = $('.numerator, .denumerator')
+  var res = 1
+  var arr = []
+  inputs.each(function () {
+    if (!$(this).val()) {
+      empty = true
+    } else {
+      if ($(this).is('.numerator')) {
+        var num = parseFloat($(this).val())
+        var den = parseFloat($(this).closest('.input-group').find('.denominator').val())
+        if (!den) {
+          den = 1
+        }
+        arr.push({'num': num, 'den': den})
+      }
+      else if ($(this).is('.denominator')) {
+        res = res * parseFloat($(this).val())
+      }
+    }
+  })
+  $.each(arr, function (index, value) {
+    sum = sum + (res / this.den) * this.num
+  })
+  if (sum / res === 1 && !empty) {
+    result = true
+  }
+  return result
 })
 
 $.validator.addMethod('notExist', function (value, element) {

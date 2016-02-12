@@ -93,7 +93,6 @@
     function activate () {
       refresh_founder_personal_data()
       vm.address = 'Адрес не указан'
-      console.log(charter_capital)
     }
 
     $scope.$on('charter_capital:updated', function () {

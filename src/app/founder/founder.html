@@ -13,16 +13,18 @@
 			<div class="col-md-4">
 				<form ng-switch on = 'vm.share_type' smb-validate entity = 'share' tlp = 'true'>
 					<div class="input-wrapper" ng-switch-when='0'>
-						<input name = 'percent' required  type="text" ng-model = 'vm.charter_share' class="form-control" uib-tooltip='{{tooltip.percent}}' tooltip-enable='{{enable_tooltip.percent}}' >
+						<input name = 'percent' founder = '{{vm.idx}}' required  type="text" ng-model = 'vm.charter_share' class="form-control percent" uib-tooltip='{{tooltip.percent.text}}' tooltip-enable='{{tooltip.percent.enabled}}' >
 					</div>
 					<div class="input-wrapper" ng-switch-when='1'>
-						<input name = 'decimal_fraction' required type="text" ng-model = 'vm.charter_share' class="form-control" uib-tooltip='{{tooltip.decimal_fraction}}' tooltip-enable='{{enable_tooltip.decimal_fraction}}'>
+						<input name = 'decimal_fraction' founder = '{{vm.idx}}' required type="text" ng-model = 'vm.charter_share' class="form-control decimal_fraction" uib-tooltip='{{tooltip.decimal_fraction.text}}' tooltip-enable='{{tooltip.decimal_fraction.enabled}}'>
 					</div>
 					<div class="input-wrapper simple_fraction" ng-switch-when='2'>
 						<div class="input-group">
-							<input type="text" name = 'numerator' required ng-model = 'vm.numerator' class="form-control numerator" uib-tooltip='{{tooltip.numerator}}' tooltip-enable='{{enable_tooltip.numerator}}'>
+							<input type="text" name = 'numerator' required ng-model = 'vm.numerator' founder = '{{vm.idx}}' class="form-control numerator" uib-tooltip='{{tooltip.numerator.text}}' tooltip-enable='{{tooltip.numerator.enabled}}'>
+
 							<span class="input-group-addon">/</span>
-							<input name = 'denumerator' required type="text" ng-model = 'vm.denumerator' class="form-control denumerator" uib-tooltip='{{tooltip.denumerator}}' tooltip-enable='{{enable_tooltip.denumerator}}'>
+
+							<input name = 'denumerator' required type="text" ng-model = 'vm.denumerator' founder = '{{vm.idx}}' class="form-control denumerator" uib-tooltip='{{tooltip.denumerator.text}}' tooltip-enable='{{tooltip.denumerator.enabled}}'>
 						</div>
 					</div>	
 				</form>				

@@ -176,13 +176,14 @@
             percent: {
               required: true,
               positive_and_number: true,
-              percent: true,
-              two_digits_fractional: true
+              two_digits_fractional: true,
+              percent: true
             },
             decimal_fraction: {
               required: true,
               positive_and_number: true,
               two_digits_fractional: true,
+              decimal_fraction: true
             },
             numerator: {
               required: true,
@@ -200,33 +201,61 @@
           break
       }
 
-      scope.tooltip = {}
-      scope.enable_tooltip = {}
+      scope.tooltip = {
+        decimal_fraction: {},
+        denumerator: {},
+        numerator: {},
+        percent: {}
+      }
+
       if (attrs['tlp']) {
+        // in this case I use $parent.$parent in order to get common parent scope for each input
+        //  and sync them
         element.validate({
-          submitHandler: function (form) {
-            console.log(form)
-          },
           rules: rules,
           messages: messages,
           errorClass: 'has-error',
           validClass: 'has-success',
           errorPlacement: function (error, errorElement) {
-            var idx = $(errorElement).attr('name')
-            scope.tooltip[idx] = $(error).html()
+            var name = $(errorElement).attr('name')
+            var idx = $(errorElement).attr('founder')
+            scope.tooltip[name].text = $(error).html()
+            scope.$parent.$parent.tooltips[idx] = scope.tooltip
           },
           highlight: function (element, errorClass, validClass) {
             $(element).closest('.input-wrapper').addClass(errorClass).removeClass(validClass)
-            var idx = $(element).attr('name')
-            scope.enable_tooltip[idx] = true
+            var name = $(element).attr('name')
+            var idx = $(element).attr('founder')
+            scope.tooltip[name].enabled = true
+            if (!scope.$parent.$parent.tooltips) { // if common parent doesn't exist
+              scope.$parent.$parent.tooltips = {}
+            }
+            scope.$parent.$parent.tooltips[idx] = scope.tooltip
           },
           unhighlight: function (element, errorClass, validClass) {
-            $(element).closest('.input-wrapper').removeClass(errorClass).addClass(validClass)
-            var idx = $(element).attr('name')
-            scope.enable_tooltip[idx] = false
+            $('.input-wrapper').removeClass(errorClass).addClass(validClass)
+            var name = $(element).attr('name')
+            var idx = $(element).attr('founder')
+            scope.tooltip[name].enabled = false
+            if (!scope.$parent.$parent.tooltips) { // if common parent doesn't exist
+              scope.$parent.$parent.tooltips = {}
+            }
+            // when all inputs are valid, disable their tooltips
+            scope.$parent.$parent.tooltips[idx] = scope.tooltip
+            for (var founder_id in scope.$parent.$parent.tooltips) {
+              // goin' through tooltips by founder id
+              if (scope.$parent.$parent.tooltips.hasOwnProperty(founder_id)) {
+                for (name in scope.$parent.$parent.tooltips[founder_id]) {
+                  // search for input name in each tooltip obj
+                  if (scope.$parent.$parent.tooltips[founder_id].hasOwnProperty(name)) {
+                    scope.$parent.$parent.tooltips[founder_id][name].enabled = false
+                  }
+                }
+              }
+            }
+            console.log(scope.$parent.$parent.tooltips)
           }
         })
-
       } else {
         element.validate({
           submitHandler: function (form) {

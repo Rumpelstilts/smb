@@ -38,11 +38,14 @@
         case 2:
           var common_denumenator = 0
           for (i = 0; i < service.shares.length; i++) {
+            if (isNaN(service.shares[i].denum) || isNaN(service.shares[i].num)) {
+              return false
+            }
             common_denumenator += service.shares[i].denum
           }
           var numerator_sum = 0
           for (i = 0; i < service.shares.length; i++) {
-            numerator_sum += service.shares[i].num
+            numerator_sum += service.shares[i].num * common_denumenator / service.shares[i].denum
           }
           return (numerator_sum / common_denumenator === 1)
       }
