@@ -11,7 +11,7 @@
 				<a href="javascript:(0)" ng-class = "{'text-success': vm.address_valid, 'text-danger': !vm.address_valid }" ng-bind = 'vm.address' ng-click = 'vm.edit_founder_address()'></a>
 			</div>
 			<div class="col-md-4">
-				<form ng-switch on = 'vm.share_type' smb-validate entity = 'share' tlp = 'true'>
+				<form ng-switch on = 'vm.share_type' smb-validate entity = 'share' tlp = 'charter_shares'>
 					<!-- percent -->
 					<div class="input-wrapper" ng-switch-when='0'>
 						<input name = 'percent' founder = '{{vm.idx}}' required  type="text" ng-model = 'vm.charter_percent' class="form-control percent" uib-tooltip='{{tooltip.percent.text}}' tooltip-enable='{{tooltip.percent.enabled}}' >

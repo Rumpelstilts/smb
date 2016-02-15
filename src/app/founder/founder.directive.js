@@ -100,14 +100,14 @@
 
     $scope.$on('charter_capital:updated', function () {
       vm.share_type = charter_capital.share_type
-      count_share()
+      calc_shares()
     })
 
     function call_parent () {
       delete_founder_factory.update(vm.idx, vm.name)
     }
 
-    function count_share () {
+    function calc_shares () {
       if (charter_capital.shares_valid) {
         switch (charter_capital.share_type) {
           case 0:

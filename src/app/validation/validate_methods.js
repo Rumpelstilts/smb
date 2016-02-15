@@ -141,70 +141,14 @@ $.validator.addMethod('simple_fraction', function (value) {
   return ((sum / common_den) === 1)
 })
 
-$.validator.addMethod('simpleFraction1', function (value, element) {
-  var sum = 0
-  var result = false
-  var empty = false
-  var num = $(element).closest('.input-group').find('.numerator').val()
-  var den = $(element).closest('.input-group').find('.denominator').val()
-  if (!num || !den) {
-    empty = true
-  } else {
-    sum = parseFloat(num) / parseFloat(den)
-  }
-  if (empty || (sum <= 1 && !empty)) {
-    result = true
-  }
-  return result
+$.validator.addMethod('charter_capital', function (value) {
+  var num = parseFloat(value)
+  return ((num >= 10000) && (num <= 99999999999))
 })
 
-$.validator.addMethod('fundPartSimpleFraction', function (value, element) {
-  var sum = 0
-  var result = false
-  var empty = false
-  var inputs = $('.numerator, .denumerator')
-  var res = 1
-  var arr = []
-  inputs.each(function () {
-    if (!$(this).val()) {
-      empty = true
-    } else {
-      if ($(this).is('.numerator')) {
-        var num = parseFloat($(this).val())
-        var den = parseFloat($(this).closest('.input-group').find('.denominator').val())
-        if (!den) {
-          den = 1
-        }
-        arr.push({'num': num, 'den': den})
-      }
-      else if ($(this).is('.denominator')) {
-        res = res * parseFloat($(this).val())
-      }
-    }
-  })
-  $.each(arr, function (index, value) {
-    sum = sum + (res / this.den) * this.num
-  })
-  if (sum / res === 1 && !empty) {
-    result = true
-  }
-  return result
-})
-
-$.validator.addMethod('notExist', function (value, element) {
-  return true
-// todo uncomment after server-side
-// $.ajax({
-//  url: 'checkUserRegistered.do',
-//  data: {
-//    email: value
-//  },
-//  type: 'POST',
-//  dataType: 'text',
-//  async: false
-// }).done(function (result) {
-//  return result == 'user_exists'
-// })
+$.validator.addMethod('numbers_only', function (value) {
+  var num = parseFloat(value)
+  return (isNaN(num))
 })
 
 function convertStringToDateObject (formattedString) {
