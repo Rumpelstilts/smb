@@ -11,6 +11,7 @@
     vm.add_founder = add_founder
     vm.add_founder_collapsed = true
     vm.charter_capital = {}
+    vm.collapse_new_founder = collapse_new_founder
     vm.new_founder
     vm.founders = []
     vm.title = ''
@@ -23,7 +24,6 @@
     })
     // //////////////
     function activate () {
-      refresh_new_founder()
     }
 
     function add_founder () {
@@ -52,6 +52,13 @@
       })
     }
 
+    function collapse_new_founder () {
+      if (vm.add_founder_collapsed) {
+        refresh_new_founder()
+      }
+      vm.add_founder_collapsed = !vm.add_founder_collapsed
+    }
+
     function refresh_new_founder () {
       vm.new_founder = {
         contact_data: contact_data(),
@@ -59,9 +66,6 @@
         passport: passport.ru()
       }
       reset_forms()
-    // $('.new_founder').find('form').each(function () {
-    //   $(this).$setPristine()
-    // })
     }
 
     function reset_forms () {

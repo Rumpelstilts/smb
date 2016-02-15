@@ -146,11 +146,6 @@ $.validator.addMethod('charter_capital', function (value) {
   return ((num >= 10000) && (num <= 99999999999))
 })
 
-$.validator.addMethod('numbers_only', function (value) {
-  var num = parseFloat(value)
-  return (isNaN(num))
-})
-
 function convertStringToDateObject (formattedString) {
   var dateParts = formattedString.split('.')
   return new Date(dateParts[2] + '-' + dateParts[1] + '-' + dateParts[0])

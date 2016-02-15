@@ -295,9 +295,6 @@
         }
       } else {
         element.validate({
-          submitHandler: function (form) {
-            console.log(form)
-          },
           rules: rules,
           messages: messages,
           errorClass: 'has-error',

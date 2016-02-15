@@ -21,7 +21,7 @@
 <div class="form-group" ng-repeat='founder in llc.founders track by $index' smb-founder model = 'founder' idx = '$index+1'></div>
 <div class="row">
 	<div class="col-md-12">
-		<a href="javascript:void(0)" class="btn btn-info pull-right" ng-click = 'llc.add_founder_collapsed = !llc.add_founder_collapsed'>Новый учредитель</a>
+		<a href="javascript:void(0)" class="btn btn-info pull-right" ng-show = "llc.add_founder_collapsed" ng-click = 'llc.collapse_new_founder()'>Новый учредитель</a>
 	</div>
 </div>
 <div class="row" uib-collapse = 'llc.add_founder_collapsed'>
@@ -31,6 +31,7 @@
 		<form name = 'new_founder_passport' smb-validate entity = 'passport_ru' smb-passport model = 'llc.new_founder.passport'></form>
 		<form name = 'new_founder_contact' smb-validate entity = 'contact_data' smb-contact-data model = 'llc.new_founder.contact_data'></form>
 		<a href="javascript:void(0)" class="btn btn-info pull-right" ng-click = 'llc.add_founder()'>Добавить</a>
+		<a href="javascript:void(0)" class="btn btn-info pull-right" ng-click = 'llc.collapse_new_founder()'>Очистить и закрыть</a>
 	</div>
 </div>
 <script type="text/ng-template" id="founder_address.html">
