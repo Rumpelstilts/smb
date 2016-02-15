@@ -9,6 +9,7 @@
       'ui.bootstrap',
       'ui.router',
       'ngResource',
-      'ngSanitize'
+      'ngSanitize',
+      'toastr'
     ])
 })()

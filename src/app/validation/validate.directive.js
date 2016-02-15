@@ -4,9 +4,9 @@
   angular
     .module('smb')
     .directive('smbValidate', smbValidate)
-  smbValidate.$inject = ['$compile', '$injector']
+  smbValidate.$inject = ['$compile', '$injector', 'charter_capital']
   /* @ngInject */
-  function smbValidate ($compile, $injector) {
+  function smbValidate ($compile, $injector, charter_capital) {
     // Usage:
     // <form smb-validate></form>
     // Creates:
@@ -231,6 +231,8 @@
               scope.$parent.$parent.tooltips = {}
             }
             scope.$parent.$parent.tooltips[idx] = scope.tooltip
+            charter_capital.shares_valid = false
+            charter_capital.update()
           },
           unhighlight: function (element, errorClass, validClass) {
             $('.input-wrapper').removeClass(errorClass).addClass(validClass)
@@ -253,7 +255,8 @@
                 }
               }
             }
-            console.log(scope.$parent.$parent.tooltips)
+            charter_capital.shares_valid = true
+            charter_capital.update()
           }
         })
       } else {

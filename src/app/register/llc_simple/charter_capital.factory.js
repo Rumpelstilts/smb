@@ -8,8 +8,9 @@
   charter_capital.$inject = ['$rootScope']
   function charter_capital ($rootScope) {
     var service = {
-      share_type: 0,
       amount: 10000,
+      share_type: 0,
+      shares_valid: '',
       update: update
     }
     return service

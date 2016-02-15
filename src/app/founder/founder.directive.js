@@ -73,13 +73,16 @@
     vm.address
     vm.address_valid
     vm.call_parent = call_parent
-    vm.charter_share
+    vm.charter_decimal
+    vm.charter_percent
+    vm.charter_share = 'Не определена'
     vm.denumerator = ''
     vm.edit_address = true
     vm.edit_info = true
     // vm.edit_founder_address = edit_founder_address
     // vm.edit_founder_info = edit_founder_info
     vm.founder.address_coords = []
+    vm.founder.property_payment = false
     vm.fraction
     vm.name
     vm.name_valid
@@ -97,7 +100,7 @@
 
     $scope.$on('charter_capital:updated', function () {
       vm.share_type = charter_capital.share_type
-      vm.charter_share = ''
+      count_share()
     })
 
     function call_parent () {
@@ -105,20 +108,28 @@
     }
 
     function count_share () {
-      switch (charter_capital.share_type) {
-        case 0:
-          vm.charter_share = charter_capital.amount / 100 * vm.fraction
-          break
-        case '1':
-          vm.charter_share = charter_capital.amount * vm.fraction
-          break
-        case '2':
-          if (vm.denumerator === '' || vm.numerator === '') {
-            vm.charter_share = 'Не определена'
-          } else {
-            vm.charter_share = charter_capital.amount * vm.numerator / vm.denumerator
-          }
-          break
+      if (charter_capital.shares_valid) {
+        switch (charter_capital.share_type) {
+          case 0:
+            //  percent
+            vm.charter_share = charter_capital.amount / 100 * parseFloat(vm.charter_percent)
+            break
+          case '1':
+            //  decimal fraction
+            vm.charter_share = charter_capital.amount * parseFloat(vm.charter_decimal)
+            break
+          case '2':
+            //  simple fraction
+            vm.charter_share = charter_capital.amount * parseFloat(vm.numerator) / parseFloat(vm.denumerator)
+            break
+        }
+        if (isNaN(vm.charter_share)) {
+          vm.charter_share = 'Не определена'
+        } else {
+          vm.charter_share = vm.charter_share.toFixed(2)
+        }
+      } else {
+        vm.charter_share = 'Не определена'
       }
     }
 
@@ -164,14 +175,6 @@
         }
       })
       return (invalid === 0)
-    }
-
-    function validate_simple_fraction () {
-      if (vm.numerator.val > vm.denumerator.val) {
-        vm.denumerator.valid = false
-        return 'Знаменатель должен быть меньше числителя'
-      }
-
     }
   }
 })()

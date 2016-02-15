@@ -12,12 +12,17 @@
 			</div>
 			<div class="col-md-4">
 				<form ng-switch on = 'vm.share_type' smb-validate entity = 'share' tlp = 'true'>
+					<!-- percent -->
 					<div class="input-wrapper" ng-switch-when='0'>
-						<input name = 'percent' founder = '{{vm.idx}}' required  type="text" ng-model = 'vm.charter_share' class="form-control percent" uib-tooltip='{{tooltip.percent.text}}' tooltip-enable='{{tooltip.percent.enabled}}' >
+						<input name = 'percent' founder = '{{vm.idx}}' required  type="text" ng-model = 'vm.charter_percent' class="form-control percent" uib-tooltip='{{tooltip.percent.text}}' tooltip-enable='{{tooltip.percent.enabled}}' >
 					</div>
+
+					<!-- decimal fraction -->
 					<div class="input-wrapper" ng-switch-when='1'>
-						<input name = 'decimal_fraction' founder = '{{vm.idx}}' required type="text" ng-model = 'vm.charter_share' class="form-control decimal_fraction" uib-tooltip='{{tooltip.decimal_fraction.text}}' tooltip-enable='{{tooltip.decimal_fraction.enabled}}'>
+						<input name = 'decimal_fraction' founder = '{{vm.idx}}' required type="text" ng-model = 'vm.charter_decimal' class="form-control decimal_fraction" uib-tooltip='{{tooltip.decimal_fraction.text}}' tooltip-enable='{{tooltip.decimal_fraction.enabled}}'>
 					</div>
+
+					<!-- simple fraction -->
 					<div class="input-wrapper simple_fraction" ng-switch-when='2'>
 						<div class="input-group">
 							<input type="text" name = 'numerator' required ng-model = 'vm.numerator' founder = '{{vm.idx}}' class="form-control numerator" uib-tooltip='{{tooltip.numerator.text}}' tooltip-enable='{{tooltip.numerator.enabled}}'>
@@ -37,7 +42,14 @@
 </div>
 <div class="row"> 
 	<div class="col-md-12">
-		<p><b>Номинальная доля в УК:&nbsp</b><span>Не определена</span></p>	
+		<p>
+			<b>Номинальная доля в УК:&nbsp</b>
+			<span ng-bind = 'vm.charter_share'></span>
+			<span ng-if = 'vm.charter_share != "Не определена"'>&nbsp;руб.</span>
+			<label class="checkbox-inline" ng-if = 'vm.charter_share != "Не определена"'>
+				<input type="checkbox" data-ng-model="vm.founder.property_payment"> Оплачивается имуществом
+			</label>
+		</p>	
 	</div>
 </div>
 
