@@ -73,64 +73,34 @@
     vm.address
     vm.address_valid
     vm.call_parent = call_parent
-    vm.charter_decimal
-    vm.charter_percent
-    vm.charter_share = 'Не определена'
-    vm.denumerator = ''
     vm.edit_address = true
     vm.edit_info = true
     // vm.edit_founder_address = edit_founder_address
     // vm.edit_founder_info = edit_founder_info
     vm.founder.address_coords = []
     vm.founder.property_payment = false
-    vm.fraction
     vm.name
     vm.name_valid
-    vm.numerator = ''
     vm.save_founder_address_changes = save_founder_address_changes
     vm.save_founder_changes = save_founder_changes
+    vm.share
     vm.share_type = charter_capital.share_type
     vm.validate_forms = validate_forms
     activate()
 
     function activate () {
+      charter_capital.create_share(vm.idx)
+      vm.share = charter_capital.shares[vm.idx]
       refresh_founder_personal_data()
       vm.address = 'Адрес не указан'
     }
 
     $scope.$on('charter_capital:updated', function () {
       vm.share_type = charter_capital.share_type
-      calc_shares()
     })
 
     function call_parent () {
       delete_founder_factory.update(vm.idx, vm.name)
-    }
-
-    function calc_shares () {
-      if (charter_capital.shares_valid) {
-        switch (charter_capital.share_type) {
-          case 0:
-            //  percent
-            vm.charter_share = charter_capital.amount / 100 * parseFloat(vm.charter_percent)
-            break
-          case '1':
-            //  decimal fraction
-            vm.charter_share = charter_capital.amount * parseFloat(vm.charter_decimal)
-            break
-          case '2':
-            //  simple fraction
-            vm.charter_share = charter_capital.amount * parseFloat(vm.numerator) / parseFloat(vm.denumerator)
-            break
-        }
-        if (isNaN(vm.charter_share)) {
-          vm.charter_share = 'Не определена'
-        } else {
-          vm.charter_share = vm.charter_share.toFixed(2)
-        }
-      } else {
-        vm.charter_share = 'Не определена'
-      }
     }
 
     function refresh_founder_address () {

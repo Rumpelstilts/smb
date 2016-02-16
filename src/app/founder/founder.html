@@ -1,6 +1,6 @@
 <div class="row form-group">
 	<div class="col-sm-1 col-xs-2">
-		<span ng-bind = 'vm.idx'></span>
+		<span ng-bind = 'vm.idx+1'></span>
 	</div>
 	<div class="col-sm-10 col-xs-7">
 		<div class="row">
@@ -11,25 +11,28 @@
 				<a href="javascript:(0)" ng-class = "{'text-success': vm.address_valid, 'text-danger': !vm.address_valid }" ng-bind = 'vm.address' ng-click = 'vm.edit_founder_address()'></a>
 			</div>
 			<div class="col-md-4">
-				<form ng-switch on = 'vm.share_type' smb-validate entity = 'share' tlp = 'charter_shares'>
+				<form ng-switch on = 'vm.share_type' smb-validate entity = 'charter_shares' tlp = 'charter_shares'>
 					<!-- percent -->
 					<div class="input-wrapper" ng-switch-when='0'>
-						<input name = 'percent' founder = '{{vm.idx}}' required  type="text" ng-model = 'vm.charter_percent' class="form-control percent" uib-tooltip='{{tooltip.percent.text}}' tooltip-enable='{{tooltip.percent.enabled}}' >
+						<div class="input-group">
+							<input name = 'percent' founder = '{{vm.idx}}' required  type="text" ng-model = 'vm.share.percent' class="form-control percent" uib-tooltip='{{tooltip.percent.text}}' tooltip-enable='{{tooltip.percent.enabled}}' >
+							<span class="input-group-addon">%</span>
+						</div>						
 					</div>
 
 					<!-- decimal fraction -->
 					<div class="input-wrapper" ng-switch-when='1'>
-						<input name = 'decimal_fraction' founder = '{{vm.idx}}' required type="text" ng-model = 'vm.charter_decimal' class="form-control decimal_fraction" uib-tooltip='{{tooltip.decimal_fraction.text}}' tooltip-enable='{{tooltip.decimal_fraction.enabled}}'>
+						<input name = 'decimal_fraction' founder = '{{vm.idx}}' required type="text" ng-model = 'vm.share.decimal_fraction' class="form-control decimal_fraction" uib-tooltip='{{tooltip.decimal_fraction.text}}' tooltip-enable='{{tooltip.decimal_fraction.enabled}}'>
 					</div>
 
 					<!-- simple fraction -->
 					<div class="input-wrapper simple_fraction" ng-switch-when='2'>
 						<div class="input-group">
-							<input type="text" name = 'numerator' required ng-model = 'vm.numerator' founder = '{{vm.idx}}' class="form-control numerator" uib-tooltip='{{tooltip.numerator.text}}' tooltip-enable='{{tooltip.numerator.enabled}}'>
+							<input type="text" name = 'numerator' required ng-model = 'vm.share.numerator' founder = '{{vm.idx}}' class="form-control numerator" uib-tooltip='{{tooltip.numerator.text}}' tooltip-enable='{{tooltip.numerator.enabled}}'>
 
 							<span class="input-group-addon">/</span>
 
-							<input name = 'denumerator' required type="text" ng-model = 'vm.denumerator' founder = '{{vm.idx}}' class="form-control denumerator" uib-tooltip='{{tooltip.denumerator.text}}' tooltip-enable='{{tooltip.denumerator.enabled}}'>
+							<input name = 'denumerator' required type="text" ng-model = 'vm.share.denumerator' founder = '{{vm.idx}}' class="form-control denumerator" uib-tooltip='{{tooltip.denumerator.text}}' tooltip-enable='{{tooltip.denumerator.enabled}}'>
 						</div>
 					</div>	
 				</form>				
@@ -44,9 +47,9 @@
 	<div class="col-md-12">
 		<p>
 			<b>Номинальная доля в УК:&nbsp</b>
-			<span ng-bind = 'vm.charter_share'></span>
-			<span ng-if = 'vm.charter_share != "Не определена"'>&nbsp;руб.</span>
-			<label class="checkbox-inline" ng-if = 'vm.charter_share != "Не определена"'>
+			<span ng-bind = 'vm.share.val'></span>
+			<span ng-if = 'vm.share.val != "Не определена"'>&nbsp;руб.</span>
+			<label class="checkbox-inline" ng-if = 'vm.share.val != "Не определена"'>
 				<input type="checkbox" data-ng-model="vm.founder.property_payment"> Оплачивается имуществом
 			</label>
 		</p>	

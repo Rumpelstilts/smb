@@ -264,7 +264,8 @@
                 }
                 scope.$parent.$parent.tooltips[idx] = scope.tooltip
                 charter_capital.shares_valid = false
-                charter_capital.update()
+                charter_capital.undefine_shares()
+                scope.$apply()
               },
               unhighlight: function (element, errorClass, validClass) {
                 $('.input-wrapper').removeClass(errorClass).addClass(validClass)
@@ -288,7 +289,8 @@
                   }
                 }
                 charter_capital.shares_valid = true
-                charter_capital.update()
+                charter_capital.calculate_shares()
+                scope.$apply()
               }
             })
             break
