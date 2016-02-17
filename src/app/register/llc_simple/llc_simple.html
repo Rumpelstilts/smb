@@ -26,7 +26,7 @@
 				</div>
 				<div ng-cloak smb-llc-title model = 'llc.title'></div>
 			</fieldset> -->
-			<fieldset title="2">
+			<!-- <fieldset title="2">
 				<legend>2. Уставной капитал</legend>
 				<div ng-cloak class="text-center cloak-loader">
 					<p>Идет загрузка... <i class="fa fa-spinner fa-pulse"></i></p>
@@ -46,6 +46,20 @@
 					<p>Идет загрузка... <i class="fa fa-spinner fa-pulse"></i></p>
 				</div>
 				<div ng-include="'app/register/llc_simple/llc_executive.html'"></div>
+			</fieldset>
+			<fieldset title="5">
+				<legend>5.Получение документов</legend>
+				<div ng-cloak class="text-center cloak-loader">
+					<p>Идет загрузка... <i class="fa fa-spinner fa-pulse"></i></p>
+				</div>
+				<div smb-doc-delivery model = 'llc.doc_delivery'></div>
+			</fieldset> -->
+			<fieldset title="6">
+				<legend>6. Адрес общества</legend>
+				<div ng-cloak class="text-center cloak-loader">
+					<p>Идет загрузка... <i class="fa fa-spinner fa-pulse"></i></p>
+				</div>
+				<div smb-llc-address executive = 'llc.executive' address = 'llc.address'></div>
 			</fieldset>
 			<input type="submit" class="btn btn-primary stepy-finish"/>
 		</div>

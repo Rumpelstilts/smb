@@ -1,0 +1,45 @@
+<div class="row">
+	<div class="col-md-12">
+		<p>По адресу общества будет осуществляться взаимодействие с государственными органами: налоговой инспекцией, ФСС, ПФР и т. д., поэтому рекомендуем иметь доступ к почтовой корреспонденции по указанному адресу. Лучше всего, когда фактический и юридический адреса организации совпадают.</p>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-6">
+		<h4>Адресные данные</h4>
+		<div class="form-group">
+			<label class="checkbox-inline">
+				<input type="checkbox" data-ng-model="vm.manual_input" ng-change = 'vm.swap_addresses()'/> Использовать адрес регистрации руководителя
+			</label>
+		</div>		
+		<div ng-show = '!vm.manual_input'>
+			<input type="text" class="form-control" placeholder="Начните вводить адрес..." smb-autocomplete suggestiontype="address" model = 'vm.modified' ng-disabled="custom_input">
+			<div>
+				<label class="checkbox-inline"><input type="checkbox" data-ng-model="custom_input"> Ввести данные вручную</label>
+				<p class="text-muted"><em>Если вы не нашли свой адрес в подсказках, заполните поля вручную.</em></p>			
+			</div>	
+			<form smb-validate entity = 'address' smb-custom-address model = 'vm.modified.address'  ng-show="custom_input"></form>
+			<div class="row">
+				<div class="col-md-12">
+					<div smb-y-map id="founder_{{vm.idx}}" coords = 'vm.modified.coords' style = "width: 100%; height: 500px" class="form-group"></div>
+				</div>
+			</div>		
+		</div>		
+	</div>
+	<div class="col-md-6">		
+		<div class="well">
+			<h4>Ваш адрес:</h4>
+			<div><strong>Субъект РФ:</strong><span ng-bind = 'vm.address.region'></span></div>
+			<div><strong>Город/Населенный пункт:</strong> <span ng-bind = 'vm.address.city'></span></div>
+			<div><strong>Улица:</strong> <span ng-bind = 'vm.address.street'></span></div>
+			<div><strong>Дом:</strong> <span ng-bind = 'vm.address.building'></span></div>
+			<div><strong>Тип дома:</strong> <span ng-bind = 'vm.address.buildingType'></span></div>
+			<div><strong>Корпус:</strong> <span ng-bind = 'vm.address.housing'></span></div>
+			<div><strong>Тип корпуса:</strong> <span ng-bind = 'vm.address.housingType'></span></div>
+			<div><strong>Квартира:</strong> <span ng-bind = 'vm.address.flat'></span></div>
+			<div><strong>Тип квартиры:</strong> <span ng-bind = 'vm.address.flatType'></span></div>
+			<div><strong>Индекс:</strong> <span ng-bind = 'vm.address.zip'></span></div>
+			<hr>
+			<div><strong>Налоговая:</strong> <span ng-bind = 'vm.address.fnsName'></span></div>
+		</div>
+	</div>
+</div>

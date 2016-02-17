@@ -162,6 +162,5 @@
       forms.find('.has-error').removeClass('has-error')
       forms.find('.has-success').removeClass('has-success')
     }
-
   }
 })()
