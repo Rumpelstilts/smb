@@ -3,13 +3,14 @@
   'use strict'
   angular
     .module('smb', [
+      'selectize',
+      'toastr',
       'ngCookies',
       'ngStorage',
       'ngAnimate',
       'ui.bootstrap',
       'ui.router',
       'ngResource',
-      'ngSanitize',
-      'toastr'
+      'ngSanitize'
     ])
 })()

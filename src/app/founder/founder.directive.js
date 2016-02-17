@@ -79,7 +79,6 @@
     // vm.edit_founder_info = edit_founder_info
     vm.founder.address_coords = []
     vm.founder.property_payment = false
-    vm.name
     vm.name_valid
     vm.save_founder_address_changes = save_founder_address_changes
     vm.save_founder_changes = save_founder_changes
@@ -89,6 +88,7 @@
     activate()
 
     function activate () {
+      vm.founder.id = vm.idx + 1
       charter_capital.create_share(vm.idx)
       vm.share = charter_capital.shares[vm.idx]
       refresh_founder_personal_data()
@@ -100,7 +100,7 @@
     })
 
     function call_parent () {
-      delete_founder_factory.update(vm.idx, vm.name)
+      delete_founder_factory.update(vm.idx, vm.founder.full_name)
     }
 
     function refresh_founder_address () {
@@ -113,11 +113,11 @@
     }
 
     function refresh_founder_personal_data () {
-      vm.name = vm.founder.personal_data.last_name + ' ' +
+      vm.founder.full_name = vm.founder.personal_data.last_name + ' ' +
         vm.founder.personal_data.name + ' ' +
         vm.founder.personal_data.mid_name
-      if (vm.name.trim() === '') {
-        vm.name = 'Учредитель не указан'
+      if (vm.founder.full_name.trim() === '') {
+        vm.founder.full_name = 'Учредитель не указан'
       }
     }
 
@@ -127,8 +127,9 @@
       vm.edit_address = !vm.edit_address
     }
     function save_founder_changes () {
-      refresh_founder_personal_data()
       vm.name_valid = validate_forms('founder_info')
+      refresh_founder_personal_data()
+      console.log($scope.$parent)
       vm.edit_info = !vm.edit_info
     }
 

@@ -15,7 +15,7 @@
     return service
     // //////////////
     function update (idx, name) {
-      service.idx = idx - 1
+      service.idx = idx
       service.name = name
       $rootScope.$broadcast('delete_founder:updated')
     }

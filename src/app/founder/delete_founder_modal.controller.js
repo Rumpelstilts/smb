@@ -17,7 +17,7 @@
     }
 
     function delete_founder () {
-      founder_data.founders.splice(vm.delete_idx, 1)
+      founder_data.founders.splice(founder_data.idx, 1)
       vm.cancel()
     }
   }

@@ -32,6 +32,7 @@
     "suggestions-jquery": "https://github.com/hflabs/suggestions-jquery.git",
     "jquery.inputmask": "https://github.com/RobinHerbots/jquery.inputmask.git#~3.2.7",
     "angular-bootstrap": "~1.1.2",
-    "angular-toastr": "~1.7.0"
+    "angular-toastr": "~1.7.0",
+    "angular-selectize2": "~3.0.1"
   }
 }

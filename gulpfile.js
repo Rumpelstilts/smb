@@ -46,6 +46,12 @@ gulp.task('main_bower_files', function () {
             './dist/min/jquery.inputmask.bundle.min.js'
           ]
         },
+        'selectize': {
+          main: [
+            './dist/js/selectize.min.js',
+            './dist/css/selectize.bootstrap3.css'
+          ]
+        },
         'suggestions-jquery': {
           main: [
             './dist/js/jquery.suggestions.min.js',
