@@ -32,6 +32,10 @@ $.validator.addMethod('passportAgencyCode', function (value, element) {
   return /(^\d{3}-\d{3}$)/.test(value)
 })
 
+$.validator.addMethod('zip_code', function (value, element) {
+  return (value.length === 6)
+})
+
 $.validator.addMethod('inn', function (value) {
   return value == '' || /(^\d{12}$)/.test(value)
 })

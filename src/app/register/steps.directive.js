@@ -18,26 +18,31 @@
     }
     return smbSteps
     function link (scope, element, attrs) {
-      var form_id = attrs['id']
+      var invalid
       element.stepy({
         backLabel: 'Назад',
         nextLabel: 'Далее',
         legend: true,
         enter: false,
         next: function (nextStepNumber) {
-          var invalid = 0
-          $('form').each(function () {
-            invalid += ($(this).valid()) ? 0 : 1
-          })
-          console.log(invalid)
-          toastr.success('Hello world!', 'Toastr fun!')
+          switch (nextStepNumber) {
+            default:
+              invalid = 0
+              $('form').each(function () {
+                invalid += ($(this).valid()) ? 0 : 1
+              })
+              if (invalid > 0) {
+                return false
+              }
+              console.log(invalid)
+              break
+          }
         },
         finish: function () {
           var valid = 0
           $('form').each(function () {
             valid += ($(this).valid()) ? 0 : 1
           })
-          console.log(valid)
         }
       })
     }

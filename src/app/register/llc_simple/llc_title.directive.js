@@ -16,7 +16,7 @@
       controllerAs: 'vm',
       link: link,
       restrict: 'A',
-      templateUrl: 'app/register/llc_simple/llc_name.html',
+      templateUrl: 'app/register/llc_simple/llc_title.html',
       scope: {
         title: '=model'
       }

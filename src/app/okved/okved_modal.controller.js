@@ -4,30 +4,46 @@
   angular
     .module('smb')
     .controller('okved_modal_ctrl', okved_modal_ctrl)
-  okved_modal_ctrl.$inject = ['$uibModalInstance', 'user_okveds', '$http']
+  okved_modal_ctrl.$inject = ['$uibModalInstance', 'user_okveds', '$http', '$scope']
   /* @ngInject */
-  function okved_modal_ctrl ($uibModalInstance, user_okveds, $http) {
+  function okved_modal_ctrl ($uibModalInstance, user_okveds, $http, $scope) {
     var vm = this
     vm.apply_changes = apply_changes
     vm.cancel = cancel
     vm.check_element = check_element
     vm.fetch_children = fetch_children
     vm.node // main branch
-    var selected_okveds = []
+    vm.selected_okveds = []
+
+    var currently_chosen_okveds = []
     activate()
     // //////////////
     function activate () {
       fetch_node()
+      if (user_okveds.chosen.length !== 0) {
+        angular.copy(user_okveds.chosen, currently_chosen_okveds)
+      }
     }
 
     function apply_changes () {
-      user_okveds.chosen = selected_okveds
+      user_okveds.chosen = currently_chosen_okveds
       console.log('changes applied!')
       cancel()
     }
 
     function cancel () {
       $uibModalInstance.dismiss('cancel')
+    }
+
+    function check_chosen_okveds (el) {
+      if (document.getElementById(el.id).checked) {
+        currently_chosen_okveds.push(el)
+        el.main = false
+      } else {
+        var idx = currently_chosen_okveds.indexOf(el)
+        currently_chosen_okveds.splice(idx, 1)
+      }
+      console.log(currently_chosen_okveds)
     }
 
     //  check/uncheck children after direct click on parent checkbox
@@ -49,7 +65,8 @@
     function check_element (el) {
       check_children(el)
       check_parent(el)
-      collect_selected_okveds()
+      // collect_selected_okveds()
+      check_chosen_okveds(el)
     }
 
     function check_parent (el) {
@@ -96,7 +113,7 @@
     }
 
     function collect_selected_okveds () {
-      selected_okveds = []
+      vm.selected_okveds = []
       for (var i = 0; i < vm.node.length; i++) {
         if (vm.node[i].children) {
           push_children(vm.node[i].children)
@@ -153,16 +170,16 @@
     // recursive find nodes branch with specified id
     // starting from top of node down to leaves
     /*
-    	params:
-    		el - current element
-    		parents = parents of initial element(watch find_parent() func), 
-    			e.g. ['1', '1.1', '1.1.5']
-    		child_idx - level of branch
-    	alghorightm: 
-    		should work like ladder
-    		goes one level down when branch with specified id is found
-    	returns:
-    		parent of original element
+      params:
+        el - current element
+        parents = parents of initial element(watch find_parent() func), 
+          e.g. ['1', '1.1', '1.1.5']
+        child_idx - level of branch
+      alghorightm: 
+        should work like ladder
+        goes one level down when branch with specified id is found
+      returns:
+        parent of original element
     */
     function find_child (el, parents, child_idx) {
       for (var i = 0; i < el.length; i++) {
@@ -171,7 +188,6 @@
           child_idx++
           // if it's last parent
           if (child_idx === parents.length) {
-            console.log(el[i].id)
             return el[i]
           } else {
             // if it isn't
@@ -185,8 +201,8 @@
       for (var i = 0; i < children.length; i++) {
         if (children[i].checked) {
           var standart_okved = new TrimmedOkved(children[i])
-          selected_okveds.push(standart_okved)
-          console.log(selected_okveds)
+          vm.selected_okveds.push(standart_okved)
+          console.log(vm.selected_okveds)
         } else if (children[i].indeterminate) {
           //  if child is indeterminate, repeat
           push_children(children[i].children)
@@ -200,6 +216,7 @@
     function TrimmedOkved (okved) {
       this.id = okved.id
       this.title = okved.title
+      this.parents = okved.parents
       this.main = false
     }
   }

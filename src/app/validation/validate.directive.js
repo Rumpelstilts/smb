@@ -39,6 +39,11 @@
             },
             building_type: {
               required: true
+            },
+            zip: {
+              required: true,
+              number: true,
+              zip_code: true
             }
           }
           break

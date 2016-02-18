@@ -13,13 +13,13 @@
 <div class="row" ng-controller = "ie_register_controller as ie">
 	<div class="col-md-12">
 		<div id = "register_ie" smb-steps>
-			<fieldset title="1">
+			<!-- <fieldset title="1">
 				<legend>1. Данные заявителя</legend>
 				<div ng-cloak class="text-center cloak-loader">
 					<p>Идет загрузка... <i class="fa fa-spinner fa-pulse"></i></p>
 				</div>
 				<div ng-cloak ng-include="'app/register/ie/applicant_details.html'"></div>
-			</fieldset>
+			</fieldset> -->
 			<fieldset title="2">
 				<legend>2. Место жительства</legend>
 				<div ng-cloak class="text-center cloak-loader">
@@ -57,6 +57,6 @@
 			</fieldset>
 			<input type="submit" class="btn btn-primary stepy-finish"/>
 		</div>
-		<pre>{{ie | json}}</pre>
+		<!-- <pre>{{ie | json}}</pre> -->
 	</div>
 </div>

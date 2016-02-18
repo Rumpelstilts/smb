@@ -47,6 +47,7 @@
 
             scope.ac.subject.address_coords = [parseFloat(suggestion.data.geo_lat), parseFloat(suggestion.data.geo_lon)]
             console.log(scope.ac.subject)
+            scope.$parent.custom_input = true
             scope.$apply()
           }
           break
