@@ -28,7 +28,7 @@
 </div>
 <div class="row" ng-if = "(llc.founders.length > 1 && llc.multiple_founders == 0)">
 	<div class="col-md-6">
-		<selectize config='llc.founder_config' options='llc.founders' ng-model="llc.executive.founder"></selectize>
+		<selectize config='llc.founder_config' options='llc.founders' ng-model="llc.executive_id"></selectize>
 	</div>
 </div>
 <div class="row">
@@ -72,3 +72,4 @@
 		</div>
 	</div>		
 </div>
+<pre>{{llc.executive}}</pre>

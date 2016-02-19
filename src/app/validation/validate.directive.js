@@ -314,15 +314,6 @@
           unhighlight: function (element, errorClass, validClass) {
             unhighlight_service.set_rule(element, errorClass, validClass)
           }
-        // errorPlacement: function (error, errorElement) {
-        //   $(errorElement).closest('.form-group').append(error)
-        // },
-        // highlight: function (element, errorClass, validClass) {
-        //   $(element).closest('.form-group').addClass(errorClass).removeClass(validClass)
-        // },
-        // unhighlight: function (element, errorClass, validClass) {
-        //   $(element).closest('.form-group').removeClass(errorClass).addClass(validClass)
-        // }
         })
       }
     }
