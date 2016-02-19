@@ -17,7 +17,6 @@
       bindToController: true,
       controller: Controller,
       controllerAs: 'cc',
-      link: link,
       templateUrl: 'app/individual/citizenship.html',
       restrict: 'A',
       scope: {
@@ -25,8 +24,6 @@
       }
     }
     return smbCitizenship
-    function link (scope, element, attrs) {
-    }
   }
   /* @ngInject */
   Controller.$inject = ['$http']

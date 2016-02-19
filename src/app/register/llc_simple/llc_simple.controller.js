@@ -103,6 +103,13 @@
         maxItems: 1,
         placeholder: 'Учредитель',
         onInitialize: function (selectize) {
+          selectize.on('change', function () {
+            var value = parseInt(selectize.getValue(), 10)
+            // find founder by id and make it executive
+            vm.founders.some(function (element, index, array) {
+              get_founder_by_id(element, value)
+            })
+          })
           // watch founders in order to update selectize
           $scope.$watch('llc.founders', function (curr, prev) {
             selectize.clear()
@@ -145,6 +152,13 @@
         refresh_new_founder()
       }
       vm.add_founder_collapsed = !vm.add_founder_collapsed
+    }
+
+    function get_founder_by_id (element, val) {
+      if (element.id === val) {
+        vm.executive = element
+        return true
+      } else return false
     }
 
     function refresh_new_founder () {
