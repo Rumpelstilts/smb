@@ -1,4 +1,4 @@
-/*global angular*/
+/*global angular $*/
 ;(function () {
   'use strict'
   angular
@@ -41,7 +41,12 @@
       valueField: 'id',
       labelField: 'title',
       maxItems: 1,
-      placeholder: 'Гражданство'
+      placeholder: 'Гражданство',
+      onInitialize: function (selectize) {
+        selectize.on('change', function () {
+          $('form[entity = "citizenship"]').data('validator').element('input[name = "citizenship"]')
+        })
+      }
     }
 
     vm.countries_config = {
@@ -49,7 +54,13 @@
       valueField: 'id',
       labelField: 'name',
       maxItems: 1,
-      placeholder: 'Государство'
+      searchField: 'name',
+      placeholder: 'Государство',
+      onInitialize: function (selectize) {
+        selectize.on('change', function () {
+          $('form[entity = "citizenship"]').data('validator').element('input[name = "country"]')
+        })
+      }
     }
     activate()
 

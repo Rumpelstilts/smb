@@ -62,8 +62,11 @@
             citizenshipCode: {
               required: true
             },
+            citizenship: {
+              selectize: true
+            },
             country: {
-              required: true
+              selectize: true
             }
           }
           break
@@ -248,6 +251,7 @@
               percent: {}
             }
             element.validate({
+              ignore: '',
               rules: rules,
               messages: messages,
               errorClass: 'has-error',
@@ -301,6 +305,7 @@
         }
       } else {
         element.validate({
+          ignore: ':hidden:not(.validate-require)',
           rules: rules,
           messages: messages,
           errorClass: 'has-error',
