@@ -35,15 +35,29 @@
           if (attrs['id'] === 'registration_llc') {
           } else {
             switch (nextStepNumber) {
-              case 3:
-                if ($('.alert.alert-info').length >= 0) {
+              case 2:
+                if ($('.alert.alert-info:not(:hidden)').length > 0) {
                   toastr.error('Выберите адрес.', 'Ошибка!', {
                     'positionClass': 'toast-top-center'
                   })
                   return false
                 } else {
-                  if ($('form').length === 0) {
+                  if ($('form:not(:hidden)').length === 0) {
+                    console.log(scope)
                     // if custom input form is collpased, check model
+                    for (var prop in scope.ie.address) {
+                      if (scope.ie.address.hasOwnProperty(prop)) {
+                        // if prop is required
+                        if (prop !== 'housing' && prop !== 'housingType' && prop !== 'flat' && prop !== 'flatType') {
+                          if (!scope.ie.address[prop] || scope.ie.address[prop] === '') {
+                            toastr.error('Заполните все обязательные поля, выбрав из подсказки или заполнив вручную.', 'Ошибка!', {
+                              'positionClass': 'toast-top-center'
+                            })
+                            return false
+                          }
+                        }
+                      }
+                    }
                     console.log('123')
                   } else {
                     return default_form_validation()
@@ -68,6 +82,8 @@
                       'positionClass': 'toast-top-center'
                     })
                     return false
+                  } else {
+                    toastr.clear()
                   }
                 }
                 break

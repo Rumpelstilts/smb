@@ -78,6 +78,11 @@ $.validator.addMethod('permitDocumentExpiry', function (value, element) {
   && (permitDocumentExpiryTimestamp > currentTime)
 })
 
+$.validator.addMethod('temporary_residence_permit', function (value, element) {
+  console.log(new Date(new Date - new Date('2002-09-23')).getFullYear() - 1970)
+  return true
+})
+
 // charter capital shares
 $.validator.addMethod('positive_and_number', function (value) {
   value = value.replace(/,/g, '.')
