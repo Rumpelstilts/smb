@@ -16,14 +16,21 @@
     var smbCitizenship = {
       bindToController: true,
       controller: Controller,
-      controllerAs: 'cc',
+      controllerAs: 'vm',
       templateUrl: 'app/individual/citizenship.html',
+      link: link,
       restrict: 'A',
       scope: {
         person: '=model'
       }
     }
     return smbCitizenship
+
+    function link (scope, element, attrs) {
+      scope.vm.validate_element = function (name) {
+        element.data('validator').element('input[name = "' + name + '"]')
+      }
+    }
   }
   /* @ngInject */
   Controller.$inject = ['$http']
@@ -44,7 +51,7 @@
       placeholder: 'Гражданство',
       onInitialize: function (selectize) {
         selectize.on('change', function () {
-          $('form[entity = "citizenship"]').data('validator').element('input[name = "citizenship"]')
+          vm.validate_element('citizenship')
         })
       }
     }
@@ -58,7 +65,7 @@
       placeholder: 'Государство',
       onInitialize: function (selectize) {
         selectize.on('change', function () {
-          $('form[entity = "citizenship"]').data('validator').element('input[name = "country"]')
+          vm.validate_element('country')
         })
       }
     }
