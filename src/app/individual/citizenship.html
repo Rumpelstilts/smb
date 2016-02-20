@@ -14,7 +14,7 @@
 
 
 	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 form-group" ng-if="vm.person.citizenship == 'foreigner'">
-		<label>Выберите государство:</label>
+		<label>Выберите или начните вводить название государства:</label>
 		<input type = 'text' class="hidden validate-require" ng-bind = 'vm.person.country' name = 'country'>
 		<selectize config='vm.countries_config' options='vm.countries' ng-model="vm.person.country"></selectize>		
 		<!-- <select class="form-control" ng-model = 'vm.person.country' name="country">

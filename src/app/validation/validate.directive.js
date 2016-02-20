@@ -166,7 +166,8 @@
               cyrillicName: true
             },
             birthPlace: {
-              required: true
+              required: true,
+              cyrillic_letters_and_digits: true
             },
             birthDate: {
               required: true,

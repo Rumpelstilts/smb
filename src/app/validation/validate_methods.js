@@ -154,6 +154,10 @@ $.validator.addMethod('selectize', function (value, element) {
   return (element.innerText !== '')
 })
 
+$.validator.addMethod('cyrillic_letters_and_digits', function (value) {
+  return /^[А-Яа-яЁё0-9""''—«»+-.,\s]+$/.test(value)
+})
+
 function convertStringToDateObject (formattedString) {
   var dateParts = formattedString.split('.')
   return new Date(dateParts[2] + '-' + dateParts[1] + '-' + dateParts[0])
