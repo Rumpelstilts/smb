@@ -23,6 +23,8 @@
       $uibModalInstance.dismiss('cancel')
     }
     function delete_okved () {
+      vm.chosen_okveds[vm.delete_idx].checked = false
+      vm.chosen_okveds[vm.delete_idx].collapsed = true
       vm.chosen_okveds.splice(vm.delete_idx, 1)
       vm.cancel()
     }

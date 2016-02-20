@@ -38,7 +38,8 @@
     activate()
 
     function activate () {
-      fetch_user_okveds()
+      // fetch_user_okveds()
+      vm.okveds.chosen = []
     }
 
     function call_delete_okved_modal (idx) {
