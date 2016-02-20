@@ -2,19 +2,21 @@
 	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 form-group">
 		
 		<label>Гражданство:</label>
+		<selectize config='cc.citizenship_config' options='cc.citizenships' ng-model="cc.person.citizenship"></selectize>
 
-		<select class="form-control" ng-model = 'cc.person.citizenship' name="citizenshipCode">
+		<!-- <select class="form-control" ng-model = 'cc.person.citizenship' name="citizenshipCode">
 			<option ng-repeat = "citizenship in cc.citizenships" value = "{{citizenship.id}}" ng-bind = "citizenship.name">
 			</option>
-		</select>
+		</select> -->
 	</div>
 
 
 	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 form-group" ng-if="cc.person.citizenship == 'foreigner'">
-		<label>Выберите страну:</label>
+		<label>Выберите государство:</label>
+		<selectize config='cc.countries_config' options='cc.countries' ng-model="cc.person.country"></selectize>
 
-		<select class="form-control" ng-model = 'cc.person.country' name="country">
+		<!-- <select class="form-control" ng-model = 'cc.person.country' name="country">
 			<option ng-repeat = "country in cc.countries" value = "{{country.id}}" ng-bind = "country.name"></option>
-		</select>
+		</select> -->
 	</div>
 </div>

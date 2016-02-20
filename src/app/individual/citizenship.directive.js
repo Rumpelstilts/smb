@@ -30,12 +30,27 @@
   function Controller ($http) {
     var vm = this
     vm.citizenships = [
-      {'id': 'ru', 'name': 'Российская федерация'},
-      {'id': 'foreigner', 'name': 'Иностранный гражданин'}
+      {'id': 'ru', 'title': 'Российская федерация'},
+      {'id': 'foreigner', 'title': 'Иностранный гражданин'}
     ]
     vm.countries = ''
     vm.get_countries = get_countries
 
+    vm.citizenship_config = {
+      create: false,
+      valueField: 'id',
+      labelField: 'title',
+      maxItems: 1,
+      placeholder: 'Гражданство'
+    }
+
+    vm.countries_config = {
+      create: false,
+      valueField: 'id',
+      labelField: 'name',
+      maxItems: 1,
+      placeholder: 'Государство'
+    }
     activate()
 
     function activate () {
