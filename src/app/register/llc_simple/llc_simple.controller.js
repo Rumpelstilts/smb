@@ -116,7 +116,8 @@
             selectize.clear()
             selectize.clearOptions()
             selectize.addOption(curr)
-            console.log(curr)
+            selectize.refreshOptions()
+            console.log(selectize.options)
           }, true)
         }
       }

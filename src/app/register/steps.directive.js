@@ -35,7 +35,19 @@
           if (attrs['id'] === 'registration_llc') {
             switch (nextStepNumber) {
               case 4:
-                founders_model_validator.validate()
+                if (scope.llc.founders.length > 0) {
+                  var founders_valid = founders_model_validator.validate()
+                  if (!founders_valid) {
+                    toastr.error('Заполните данные всех учредителей.', 'Ошибка!', {
+                      'positionClass': 'toast-top-center'
+                    })
+                  }
+                } else {
+                  toastr.error('Вы не добавили ни одного учредителя', 'Ошибка!', {
+                    'positionClass': 'toast-top-center'
+                  })
+                }
+
                 break
               default:
                 return /*default_form_validation()*/
@@ -50,7 +62,6 @@
                   return false
                 } else {
                   if ($('form:not(:hidden)').length === 0) {
-                    console.log(scope)
                     // if custom input form is collpased, check model
                     for (var prop in scope.ie.address) {
                       if (scope.ie.address.hasOwnProperty(prop)) {
@@ -66,7 +77,6 @@
                         }
                       }
                     }
-                    console.log('123')
                   } else {
                     return default_form_validation()
                   }
@@ -99,8 +109,6 @@
                 return default_form_validation()
             }
           }
-
-          console.log(scope)
         },
         finish: function () {
           var valid = 0

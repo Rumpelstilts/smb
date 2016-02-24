@@ -53,7 +53,7 @@
           }
         })
 
-        ymaps.geolocation.get().then(function (res) {
+        ymaps.geolocation.get({provider: 'yandex'}).then(function (res) {
           // fetches users current location, spawns a map and sets center
           var bounds = res.geoObjects.get(0).properties.get('boundedBy')
           var map_state = ymaps.util.bounds.getCenterAndZoom(

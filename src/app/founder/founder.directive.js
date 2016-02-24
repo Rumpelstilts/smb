@@ -114,6 +114,7 @@
     activate()
 
     function activate () {
+      vm.founder.id = vm.idx // FOR ANGULAR SELECTIZE
       charter_capital.create_share(vm.idx)
       vm.share = charter_capital.shares[vm.idx]
       refresh_founder_personal_data()
@@ -122,7 +123,6 @@
         address: vm.address_valid,
         data: vm.founder_data
       }
-      console.log(founders_model_validator.founders)
     }
 
     $scope.$on('charter_capital:updated', function () {
