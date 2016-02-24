@@ -95,9 +95,9 @@
       }
     }
   }
-  Controller.$inject = ['delete_founder_factory', 'charter_capital', '$scope']
+  Controller.$inject = ['delete_founder_factory', 'charter_capital', '$scope', 'founders_model_validator']
   /* @ngInject */
-  function Controller (delete_founder_factory, charter_capital, $scope) {
+  function Controller (delete_founder_factory, charter_capital, $scope, founders_model_validator) {
     var vm = this
     vm.address
     vm.address_valid
@@ -106,7 +106,7 @@
     vm.edit_info = true
     vm.founder.address_coords = []
     vm.founder.property_payment = false
-    vm.name_valid
+    vm.founder_data
     vm.save_founder_address_changes = save_founder_address_changes
     vm.save_founder_changes = save_founder_changes
     vm.share
@@ -114,11 +114,15 @@
     activate()
 
     function activate () {
-      vm.founder.id = vm.idx + 1
       charter_capital.create_share(vm.idx)
       vm.share = charter_capital.shares[vm.idx]
       refresh_founder_personal_data()
       vm.address = 'Адрес не указан'
+      founders_model_validator.founders[vm.idx] = {
+        address: vm.address_valid,
+        data: vm.founder_data
+      }
+      console.log(founders_model_validator.founders)
     }
 
     $scope.$on('charter_capital:updated', function () {
@@ -143,7 +147,7 @@
         vm.founder.personal_data.name + ' ' +
         vm.founder.personal_data.mid_name
       if (vm.founder.full_name.trim() === '') {
-        vm.founder.full_name = 'Учредитель не указан'
+        vm.founder.full_name = 'Имя не указано'
       }
     }
 
@@ -157,7 +161,7 @@
     function save_founder_changes () {
       if (!vm.edit_info) {
         refresh_founder_personal_data()
-        vm.name_valid = vm.validate_form('founder_info')
+        vm.founder_data = vm.validate_form('founder_info')
         vm.edit_info = !vm.edit_info
       }
     }

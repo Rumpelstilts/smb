@@ -4,9 +4,9 @@
   angular
     .module('smb')
     .directive('smbSteps', smbSteps)
-  smbSteps.$inject = ['$compile', '$injector', 'toastr']
+  smbSteps.$inject = ['$compile', '$injector', 'toastr', 'founders_model_validator']
   /* @ngInject */
-  function smbSteps ($compile, $injector, toastr) {
+  function smbSteps ($compile, $injector, toastr, founders_model_validator) {
     // Usage:
     // <form smb-steps></form>
     //
@@ -34,6 +34,9 @@
         next: function (nextStepNumber) {
           if (attrs['id'] === 'registration_llc') {
             switch (nextStepNumber) {
+              case 4:
+                founders_model_validator.validate()
+                break
               default:
                 return /*default_form_validation()*/
             }

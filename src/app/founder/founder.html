@@ -5,7 +5,7 @@
 	<div class="col-sm-10 col-xs-7">
 		<div class="row">
 			<div class="col-md-4">
-				<a ng-class = "{'text-success': vm.name_valid, 'text-danger': !vm.name_valid }" href="javascript:(0)" ng-bind = 'vm.founder.full_name' ng-click = 'vm.edit_founder_info()'></a>
+				<a ng-class = "{'text-success': vm.founder_data, 'text-danger': !vm.founder_data }" href="javascript:(0)" ng-bind = 'vm.founder.full_name' ng-click = 'vm.edit_founder_info()'></a>
 			</div>
 			<div class="col-md-4">
 				<a href="javascript:(0)" ng-class = "{'text-success': vm.address_valid, 'text-danger': !vm.address_valid }" ng-bind = 'vm.address' ng-click = 'vm.edit_founder_address()'></a>
