@@ -89,6 +89,28 @@
             }
           }
           break
+        case 'llc_title':
+          rules = {
+            title_ru: {
+              required: true,
+              cyrillic_letters_and_digits: true
+            },
+            title_ru_full: {
+              required: true,
+              cyrillic_letters_and_digits: true
+            },
+            title_ru_short: {
+              required: true,
+              cyrillic_letters_and_digits: true
+            },
+            title_eng_full: {
+              required: true
+            },
+            title_eng_short: {
+              required: true
+            }
+          }
+          break
         case 'passport_ru':
           rules = {
             passportCode: {
@@ -220,27 +242,38 @@
           break
       }
 
+      function create_nodes (tooltips) {
+        console.log(element)
+        $(element).find('input').each(function () {
+          console.log('input found: ' + $(this).attr('name'))
+          tooltips[$(this).attr('name')] = {
+            text: '',
+            enabled: false
+          }
+        })
+      }
+
       if (attrs['tlp']) {
         switch (attrs['tlp']) {
-          case 'charter_capital':
-            scope.tooltip = {
-              text: '',
-              enabled: false
+          default:
+            scope.tooltips = {
             }
+            create_nodes(scope.tooltips)
             element.validate({
               rules: rules,
               messages: messages,
               errorClass: 'has-error',
               validClass: 'has-success',
               errorPlacement: function (error, errorElement) {
-                scope.tooltip.text = $(error).html()
+                scope.tooltips[$(errorElement).attr('name')].text = $(error).html()
               },
               highlight: function (element, errorClass, validClass) {
                 $(element).closest('.form-group').addClass(errorClass).removeClass(validClass)
+                scope.tooltips[$(element).attr('name')].enabled = true
               },
               unhighlight: function (element, errorClass, validClass) {
-                $('.form-group').removeClass(errorClass).addClass(validClass)
-                scope.tooltip.enabled = false
+                $(element).closest('.form-group').removeClass(errorClass).addClass(validClass)
+                scope.tooltips[$(element).attr('name')].enabled = false
               }
             })
             break

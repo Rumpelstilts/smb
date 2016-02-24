@@ -33,6 +33,10 @@
         enter: false,
         next: function (nextStepNumber) {
           if (attrs['id'] === 'registration_llc') {
+            switch (nextStepNumber) {
+              default:
+                return /*default_form_validation()*/
+            }
           } else {
             switch (nextStepNumber) {
               case 2:
@@ -89,7 +93,6 @@
                 break
               default:
                 return default_form_validation()
-                break
             }
           }
 
