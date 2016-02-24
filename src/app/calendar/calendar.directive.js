@@ -26,6 +26,9 @@
           language: 'ru',
           autoclose: true
         })
+      if (scope.date && scope.date !== '') {
+        element.val(scope.date)
+      }
       element.on('changeDate', function () {
         scope.date = element.val()
       })

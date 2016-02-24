@@ -29,6 +29,17 @@
       var linkFn
       var content
 
+      // returns amount of invalid forms; if res == 0, form is valid
+      scope.vm.validate_form = function (container) {
+        var invalid = 0
+        $(element).find('.' + container).find('form').each(function () {
+          if (!$(this).valid()) {
+            invalid++
+          }
+        })
+        return (invalid === 0)
+      }
+
       scope.vm.info_collapse_handler = function () {
         element.find('.founder_info').empty()
       }
@@ -37,11 +48,31 @@
         element.find('.founder_address').empty()
       }
 
+      scope.vm.validate_address = function () {
+        if (element.children('form:not(:hidden)').length === 0) {
+          // if custom input form is collpased, check model
+          for (var prop in scope.vm.founder.address) {
+            if (scope.vm.founder.address.hasOwnProperty(prop)) {
+              // if prop is required
+              if (prop !== 'housing' && prop !== 'housingType' && prop !== 'flat' && prop !== 'flatType') {
+                // if null or ''
+                if (!scope.vm.founder.address[prop] || scope.vm.founder.address[prop] === '') {
+                  console.log('model is not valid!')
+                  return false
+                }
+              }
+            }
+          }
+          console.log('model is valid!')
+          return true
+        } else {
+          return scope.vm.validate_form('founder_address')
+        }
+      }
+
       scope.vm.edit_founder_info = function () {
         if (!scope.vm.edit_info) {
-          if ($('.founder_info:empty')) {
-            scope.vm.edit_info = !scope.vm.edit_info
-          }
+          scope.vm.save_founder_changes()
         } else {
           t = $templateCache.get('founder_info.html')
           linkFn = $compile(t)
@@ -53,9 +84,7 @@
 
       scope.vm.edit_founder_address = function () {
         if (!scope.vm.edit_address) {
-          if ($('.founder_address:empty')) {
-            scope.vm.edit_address = !scope.vm.edit_address
-          }
+          scope.vm.save_founder_address_changes()
         } else {
           t = $templateCache.get('founder_address.html')
           linkFn = $compile(t)
@@ -75,8 +104,6 @@
     vm.call_parent = call_parent
     vm.edit_address = true
     vm.edit_info = true
-    // vm.edit_founder_address = edit_founder_address
-    // vm.edit_founder_info = edit_founder_info
     vm.founder.address_coords = []
     vm.founder.property_payment = false
     vm.name_valid
@@ -84,7 +111,6 @@
     vm.save_founder_changes = save_founder_changes
     vm.share
     vm.share_type = charter_capital.share_type
-    vm.validate_forms = validate_forms
     activate()
 
     function activate () {
@@ -122,30 +148,22 @@
     }
 
     function save_founder_address_changes () {
-      refresh_founder_address()
-      vm.address_valid = validate_forms('founder_address')
-      vm.edit_address = !vm.edit_address
+      if (!vm.edit_address) {
+        refresh_founder_address()
+        vm.address_valid = vm.validate_address()
+        vm.edit_address = !vm.edit_address
+      }
     }
     function save_founder_changes () {
-      vm.name_valid = validate_forms('founder_info')
-      refresh_founder_personal_data()
-      console.log($scope.$parent)
-      vm.edit_info = !vm.edit_info
+      if (!vm.edit_info) {
+        refresh_founder_personal_data()
+        vm.name_valid = vm.validate_form('founder_info')
+        vm.edit_info = !vm.edit_info
+      }
     }
 
     function universal_trim (val) {
       return (val) ? val.trim() : ''
-    }
-
-    // returns amount of invalid forms; if res == 0, form is valid
-    function validate_forms (container) {
-      var invalid = 0
-      $('.' + container).find('form').each(function () {
-        if (!$(this).valid()) {
-          invalid++
-        }
-      })
-      return (invalid === 0)
     }
   }
 })()

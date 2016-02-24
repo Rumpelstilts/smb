@@ -53,6 +53,7 @@
                       if (scope.ie.address.hasOwnProperty(prop)) {
                         // if prop is required
                         if (prop !== 'housing' && prop !== 'housingType' && prop !== 'flat' && prop !== 'flatType') {
+                          // if null or ''
                           if (!scope.ie.address[prop] || scope.ie.address[prop] === '') {
                             toastr.error('Заполните все обязательные поля, выбрав из подсказки или заполнив вручную.', 'Ошибка!', {
                               'positionClass': 'toast-top-center'
