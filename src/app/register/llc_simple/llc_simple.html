@@ -45,7 +45,8 @@
 				<div ng-cloak class="text-center cloak-loader">
 					<p>Идет загрузка... <i class="fa fa-spinner fa-pulse"></i></p>
 				</div>
-				<div ng-include="'app/register/llc_simple/llc_executive.html'"></div>
+				<div smb-executive ng-model = 'llc.executive' founders = 'llc.founders'></div>
+				<pre>{{llc.executive}}</pre>
 			</fieldset>
 			<fieldset title="5">
 				<legend>5.Получение документов</legend>

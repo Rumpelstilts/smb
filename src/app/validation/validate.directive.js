@@ -91,8 +91,7 @@
               selectize: true
             },
             position_title: {
-              required: true,
-              cyrillic_letters_and_digits: true
+              required: true
             },
             election_period: {
               selectize: true

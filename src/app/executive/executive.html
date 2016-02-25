@@ -1,0 +1,81 @@
+<div class="row" ng-if = "vm.founders.length == 1">
+	<div class="col-md-12">
+		У общества один учредитель, он же является руководителем
+		<div class="form-group">
+			<div>
+				<label><input type="radio" ng-model="vm.single_founder" value="0">&nbsp;Учредитель является руководителем.</label>
+			</div>
+
+			<div>
+				<label><input type="radio" ng-model="vm.single_founder" value="1">&nbsp;Выбрать руководителем стороннее лицо</label>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="row" ng-if = "vm.founders.length > 1">
+	<div class="col-md-12">
+		У общества несколько учредителей
+		<div class="form-group">
+			<div>
+				<label><input type="radio" ng-model="vm.multiple_founders" value="0">&nbsp;Выбрать руководителя из числа учредителей</label>
+			</div>
+
+			<div>
+				<label><input type="radio" ng-model="vm.multiple_founders" value="1">&nbsp;Выбрать руководителем стороннее лицо</label>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-12">
+		<form smb-validate entity = 'executive'>
+			<div class="row" ng-if = "(vm.founders.length > 1 && vm.multiple_founders == 0)">
+				<div class="col-md-6 form-group">
+					<label>Учредитель<sup class="required">*</sup></label>
+					<input type = 'text' class="hidden validate-require" ng-bind = 'vm.executive_id' name = 'executive'>
+					<selectize config='vm.founder_config' options='vm.founders' ng-model="vm.executive_id"></selectize>
+				</div>
+			</div>
+			<h4>Должность и срок избрания</h4>
+			<div class="row">
+				<div class="col-md-4 form-group">
+					<label>Наименование должности<sup class="required">*</sup></label>
+					<input type = 'text' class="hidden validate-require" ng-bind = 'vm.executive.position' name = 'position'>
+					<selectize config='vm.position_config' options='vm.executive_details.positions' ng-model="vm.executive.position"></selectize>
+				</div>
+				<div class="col-md-4 form-group" ng-if = 'vm.executive.position == 3'>
+					<label>Иная должность<sup class="required">*</sup></label>
+					<input type="text"ng-model="vm.executive.position_title" name = 'position_title' class="form-control">
+				</div>			
+			</div>
+			<div class="row">
+				<div class="col-md-4 form-group">
+					<label>Срок избрания<sup class="required">*</sup></label>
+					<input type = 'text' class="hidden validate-require" ng-bind = 'vm.executive.election_period' name = 'election_period'>
+					<selectize config='vm.election_config' options='vm.executive_details.election_periods' ng-model="vm.executive.election_period"></selectize>
+				</div>
+			</div>	
+		</form>		
+	</div>
+</div>
+<div class="row" ng-if = "(vm.founders.length == 1 && vm.single_founder == 1) || (vm.founders.length > 1 && vm.multiple_founders == 1)">
+	<div class="col-md-12">
+		<h4>Данные руководителя</h4>
+		<form name = 'executive_data' smb-validate entity = 'personal_data' smb-person-data model = 'vm.executive.personal_data'></form>
+		<form name = 'executive_passport' smb-validate entity = 'passport_ru' smb-passport model = 'vm.executive.passport'></form>
+		<form name = 'executive_contact' smb-validate entity = 'contact_data' smb-contact-data model = 'vm.executive.contact_data'></form>
+		<h4>Адрес руководителя</h4>
+		<input type="text" class="form-control" placeholder="Начните вводить адрес..." smb-autocomplete suggestiontype="address" model = 'vm.executive' ng-disabled="custom_input">
+		<div>
+			<label class="checkbox-inline"><input type="checkbox" data-ng-model="custom_input"> Ввести данные вручную</label>
+			<p class="text-muted"><em>Если вы не нашли свой адрес в подсказках, заполните поля вручную.</em></p>			
+		</div>	
+		<form smb-validate entity = 'address' smb-custom-address model = 'vm.executive.address'  ng-show="custom_input"></form>
+		<div class="row">
+			<div class="col-md-12">
+				<div smb-y-map id="founder_{{vm.idx}}" coords = 'vm.executive.address_coords' style = "width: 100%; height: 500px" class="form-group"></div>
+			</div>
+		</div>
+	</div>		
+</div>
+
