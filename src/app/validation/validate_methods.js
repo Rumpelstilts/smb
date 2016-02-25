@@ -163,6 +163,16 @@ $.validator.addMethod('cyrillic_letters_and_digits', function (value) {
   return /^[А-Яа-яЁё0-9""''—«»+-.,\s]+$/.test(value)
 })
 
+$.validator.addMethod('password_repeat', function (value, element) {
+  var repeat = $('#password').val()
+  if (repeat === '') {
+    return true
+  } else {
+    return (value === repeat)
+  }
+
+})
+
 function convertStringToDateObject (formattedString) {
   var dateParts = formattedString.split('.')
   return new Date(dateParts[2] + '-' + dateParts[1] + '-' + dateParts[0])

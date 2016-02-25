@@ -127,6 +127,18 @@
             }
           }
           break
+        case 'login':
+          rules = {
+            email: {
+              email: true,
+              required: true
+            },
+            password: {
+              required: true,
+              password: true
+            }
+          }
+          break
         case 'passport_ru':
           rules = {
             passportCode: {
@@ -225,6 +237,23 @@
             },
             middlenameForeigner: {
               latinName: true
+            }
+          }
+          break
+        case 'registration' :
+          rules = {
+            email: {
+              email: true,
+              required: true
+            },
+            password: {
+              required: true,
+              password: true
+            },
+            password_repeat: {
+              required: true,
+              password: true,
+              password_repeat: true
             }
           }
           break

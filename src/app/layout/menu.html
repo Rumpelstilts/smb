@@ -1,4 +1,4 @@
-<div ng-controller="menu_controller as menu">
+<div ng-controller="menu_controller as vm">
 	<nav class="navbar navbar-default">
 		<div class="container">
 			<div class="navbar-header">
@@ -14,20 +14,16 @@
 					<li><a ui-sref="landing"><i class="fa fa-home"></i></a></li>
 					<li><a ui-sref="register_ie">Регистрация ИП</a></li>
 					<li><a ui-sref="register_llc">Регистрация ООО</a></li>
-					<!--<li ui-sref-active="active"><a ui-sref="choose_address">Выбор адреса</a></li>-->
-					<!--<li ui-sref-active="active"><a ui-sref="available_directives">Доступные директивы</a></li>-->
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li ng-if="menu.status == 'unknown'">
-						<div ng-controller="user_registration_controller as register">
-							<button ui-sref="login" class="btn btn-success">Авторизация</button>
-							<button class="btn btn-default" ng-click="register.open_login_modal()">Вход</button>
-						</div>
+					<li ng-if="vm.status == 'unknown'">						
+						<button ui-sref="login" class="btn btn-success">Авторизация</button>
+						<button class="btn btn-default" ng-click="vm.open_login_modal()">Вход</button>
 					</li>
-					<li ng-if="menu.status == 'authorized'">
+					<li ng-if="vm.status == 'authorized'">
 						<button ui-sref="profile" class="btn btn-success">Личный кабинет</button>
 					</li>
-					<li ng-if="menu.status == 'authorized'">
+					<li ng-if="vm.status == 'authorized'">
 						<a ng-click = "logout()">Выход <i class="fa fa-sign-out"></i></a>
 					</li>
 				</ul>

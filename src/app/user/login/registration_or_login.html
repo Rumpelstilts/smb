@@ -1,6 +1,6 @@
 <div ng-init="temp_show_registration = null;">
 	<div class="modal-header">
-		<button class="close" ng-click="cancel()">×</button>
+		<button class="close" ng-click="modal.cancel()">×</button>
 		<h4 class="modal-title">
 			<span ng-show="temp_show_registration == null">Вход в сервис</span>
 			<span ng-show="temp_show_registration == 1">Регистрация</span>
@@ -14,11 +14,11 @@
 		</p>
 
 		<div ng-show="temp_show_registration == 1">
-			<ng-include src="'templates/pages/registration_sm.html'"></ng-include>
+			<ng-include src="'app/user/register/registration_modal.html'"></ng-include>
 		</div>
 
 		<div ng-show="temp_show_registration == 0">
-			<ng-include src="'templates/pages/login_sm.html'"></ng-include>
+			<ng-include src="'app/user/login/login_modal.html'"></ng-include>
 		</div>
 	</div>
 </div>
