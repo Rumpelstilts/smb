@@ -26,30 +26,36 @@
 		</div>
 	</div>
 </div>
-<div class="row" ng-if = "(llc.founders.length > 1 && llc.multiple_founders == 0)">
-	<div class="col-md-6">
-		<selectize config='llc.founder_config' options='llc.founders' ng-model="llc.executive_id"></selectize>
-	</div>
-</div>
 <div class="row">
 	<div class="col-md-12">
-		<h4>Должность и срок избрания</h4>
-		<div class="row">
-			<div class="col-md-4">
-				<label>Наименование должности<sup class="required">*</sup></label>
-				<selectize config='llc.position_config' options='llc.executive_details.positions' ng-model="llc.executive.position"></selectize>
+		<form smb-validate entity = 'executive'>
+			<div class="row" ng-if = "(llc.founders.length > 1 && llc.multiple_founders == 0)">
+				<div class="col-md-6 form-group">
+					<label>Учредитель<sup class="required">*</sup></label>
+					<input type = 'text' class="hidden validate-require" ng-bind = 'llc.executive_id' name = 'executive'>
+					<selectize config='llc.founder_config' options='llc.founders' ng-model="llc.executive_id"></selectize>
+				</div>
 			</div>
-			<div class="col-md-4" ng-if = 'llc.executive.position == 3'>
-				<label>Иная должность<sup class="required">*</sup></label>
-				<input type="text"ng-model="fpc.permission.date_of_issue" class="form-control">
-			</div>			
-		</div>
-		<div class="row">
-			<div class="col-md-4">
-				<label>Срок избрания<sup class="required">*</sup></label>
-				<selectize config='llc.election_config' options='llc.executive_details.election_periods' ng-model="llc.executive.election_period"></selectize>
+			<h4>Должность и срок избрания</h4>
+			<div class="row">
+				<div class="col-md-4 form-group">
+					<label>Наименование должности<sup class="required">*</sup></label>
+					<input type = 'text' class="hidden validate-require" ng-bind = 'llc.executive.position' name = 'position'>
+					<selectize config='llc.position_config' options='llc.executive_details.positions' ng-model="llc.executive.position"></selectize>
+				</div>
+				<div class="col-md-4 form-group" ng-if = 'llc.executive.position == 3'>
+					<label>Иная должность<sup class="required">*</sup></label>
+					<input type="text"ng-model="llc.executive.position_title" name = 'position_title' class="form-control">
+				</div>			
 			</div>
-		</div>
+			<div class="row">
+				<div class="col-md-4 form-group">
+					<label>Срок избрания<sup class="required">*</sup></label>
+					<input type = 'text' class="hidden validate-require" ng-bind = 'llc.executive.election_period' name = 'election_period'>
+					<selectize config='llc.election_config' options='llc.executive_details.election_periods' ng-model="llc.executive.election_period"></selectize>
+				</div>
+			</div>	
+		</form>		
 	</div>
 </div>
 <div class="row" ng-if = "(llc.founders.length == 1 && llc.single_founder == 1) || (llc.founders.length > 1 && llc.multiple_founders == 1)">

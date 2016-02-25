@@ -35,6 +35,7 @@
       vm.executive = {
         contact_data: contact_data(),
         election_period: 4,
+        position_title: '',
         passport: passport.ru(),
         personal_data: individual(),
         position: ''
@@ -112,13 +113,20 @@
             }
           })
           // watch founders in order to update selectize
-          $scope.$watch('llc.founders', function (curr, prev) {
+          $scope.$on('update_founder:updated', function () {
             selectize.clear()
             selectize.clearOptions()
-            selectize.addOption(curr)
+            selectize.addOption(vm.founders)
             selectize.refreshOptions()
-            console.log(selectize.options)
-          }, true)
+            console.log('options updated!')
+          })
+        // $scope.$watch('llc.founders', function (curr, prev) {
+        //   // selectize.clear()
+        //   // selectize.clearOptions()
+        //   // selectize.addOption(curr)
+        //   // selectize.refreshOptions()
+        //   // console.log(selectize.options)
+        // })
         }
       }
     }

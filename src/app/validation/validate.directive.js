@@ -82,6 +82,23 @@
             }
           }
           break
+        case 'executive':
+          rules = {
+            executive: {
+              selectize: true
+            },
+            position: {
+              selectize: true
+            },
+            position_title: {
+              required: true,
+              cyrillic_letters_and_digits: true
+            },
+            election_period: {
+              selectize: true
+            }
+          }
+          break
         case 'inn':
           rules = {
             inn: {

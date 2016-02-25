@@ -95,9 +95,9 @@
       }
     }
   }
-  Controller.$inject = ['delete_founder_factory', 'charter_capital', '$scope', 'founders_model_validator']
+  Controller.$inject = ['delete_founder_factory', 'charter_capital', '$scope', 'founders_model_validator', 'founder_watcher']
   /* @ngInject */
-  function Controller (delete_founder_factory, charter_capital, $scope, founders_model_validator) {
+  function Controller (delete_founder_factory, charter_capital, $scope, founders_model_validator, founder_watcher) {
     var vm = this
     vm.address
     vm.address_valid
@@ -155,6 +155,7 @@
       if (!vm.edit_address) {
         refresh_founder_address()
         vm.address_valid = vm.validate_address()
+        founder_watcher.update()
         vm.edit_address = !vm.edit_address
       }
     }
@@ -162,6 +163,7 @@
       if (!vm.edit_info) {
         refresh_founder_personal_data()
         vm.founder_data = vm.validate_form('founder_info')
+        founder_watcher.update()
         vm.edit_info = !vm.edit_info
       }
     }
