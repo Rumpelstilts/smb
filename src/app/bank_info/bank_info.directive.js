@@ -31,40 +31,80 @@
     var vm = this
     vm.bank_description = ''
     vm.bank_info
-    vm.city_departments
+    vm.cities = []
+    vm.contact = ''
+    vm.departments = []
     vm.department_cities
     vm.department_contact
+    vm.selected = {}
     vm.subject.bank_info
-    vm.switch_city = switch_city
-    vm.switch_department = switch_department
+
+    var department_selectize
 
     activate()
 
     function activate () {
       fetch_bank_info()
-      vm.subject.bank_info = {
+      vm.selected = {
         city: '',
         department: ''
+      }
+    }
+
+    vm.city_config = {
+      create: false,
+      valueField: 'title',
+      labelField: 'title',
+      searchField: 'title',
+      maxItems: 1,
+      placeholder: 'Город обслуживания',
+      onInitialize: function (selectize) {
+        selectize.on('change', function () {
+          vm.departments = vm.bank_info.departments[vm.selected.city]
+          department_selectize.clear()
+          department_selectize.clearOptions()
+          department_selectize.addOption(vm.departments
+          )
+          console.log(vm.departments)
+        })
+      }
+    }
+
+    vm.department_config = {
+      create: false,
+      valueField: 'title',
+      labelField: 'title',
+      searchField: 'title',
+      maxItems: 1,
+      placeholder: 'Отделение обслуживания',
+      onInitialize: function (selectize) {
+        department_selectize = selectize
+      },
+      onChange: function (value) {
+        for (var i = 0; i < vm.departments.length; i++) {
+          if (vm.departments[i].title === value) {
+            vm.contact = vm.departments[i].contacts
+            console.log(vm.contact)
+          }
+        }
       }
     }
 
     function fetch_bank_info () {
       $http.get('json/bankAccount.json').success(function (data) {
         vm.bank_info = data
-        vm.department_cities = Object.keys(vm.bank_info.departments)
-        vm.subject.bank_info.tariff = vm.bank_info.tariffDefault
+        var cities = Object.keys(vm.bank_info.departments)
+        for (var i = 0; i < cities.length; i++) {
+          vm.cities[i] = {
+            id: i,
+            title: cities[i]
+          }
+        }
+
+        // vm.subject.bank_info.tariff = vm.bank_info.tariffDefault
         console.log(vm.bank_info)
+        console.log(vm.cities)
       })
-    }
-
-    function switch_city () {
-      console.log(vm.subject.bank_info.city)
-      vm.city_departments = vm.bank_info.departments[vm.subject.bank_info.city]
-    }
-
-    function switch_department () {
-      console.log(vm.subject.bank_info.department)
-      vm.department_contact = vm.bank_info.departments[vm.subject.bank_info.city][vm.subject.bank_info.department].contacts
     }
   }
 })()

@@ -12,11 +12,10 @@
     vm.add_founder_collapsed = true
     vm.charter_capital = {}
     vm.collapse_new_founder = collapse_new_founder
+    vm.doc_delivery = 1
     vm.executive
     vm.founders = []
     vm.new_founder
-    vm.multiple_founders = 0 // when there are several founders
-    vm.single_founder = 0 // when there's single founder
     vm.title = ''
 
     // activate()

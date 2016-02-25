@@ -28,18 +28,20 @@
 		<div class="row">
 			<div class="col-xs-12 col-sx-12 col-md-12 col-lg-12 form-group">
 				<label>Город для обслуживания:</label>
-				<select class="form-control" ng-model="vm.subject.bank_info.city" ng-change="vm.switch_city()" name="departmentCity">
+				<selectize config='vm.city_config' options='vm.cities' ng-model="vm.selected.city"></selectize>
+				<!-- <select class="form-control" ng-model="vm.subject.bank_info.city" ng-change="vm.switch_city()" name="departmentCity">
 					<option ng-repeat="city in vm.department_cities" value="{{city}}">{{city}}</option>
-				</select>
+				</select> -->
 			</div>
 			<div class="col-xs-12 col-sx-12 col-md-12 col-lg-12 form-group">
 				<label>Удобное отделение:</label>
-				<select id="test" class="form-control" ng-model="vm.subject.bank_info.department" ng-change="vm.switch_department()" name="departmentName">
+				<selectize config='vm.department_config' options='vm.departments' ng-model="vm.selected.department"></selectize>
+				<!-- <select id="test" class="form-control" ng-model="vm.subject.bank_info.department" ng-change="vm.switch_department()" name="departmentName">
 					<option ng-repeat="departmentInfo in vm.city_departments track by $index" value="{{$index}}">{{departmentInfo.title}}</option>
-				</select>
+				</select> -->
 			</div>
 			<div class="col-xs-12 col-sx-12 col-md-12 col-lg-12 form-group">
-				<p ng-bind-html="vm.department_contact"></p>
+				<p ng-bind-html="vm.contact"></p>
 			</div>
 		</div>
 	</div>

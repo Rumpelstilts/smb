@@ -4,9 +4,8 @@
   angular
     .module('smb')
     .directive('smbExecutive', smbExecutive)
-  // smbExecutive.$inject = ['dependencies']
   /* @ngInject */
-  function smbExecutive ( /*dependencies*/) {
+  function smbExecutive () {
     // Usage:
     //
     // Creates:
@@ -35,7 +34,9 @@
         placeholder: 'Учредитель',
         onInitialize: function (selectize) {
           selectize.on('change', function () {
+            scope.vm.validate_element('executive')
             var value = parseInt(selectize.getValue(), 10)
+            if (value === '') return
             for (var i = 0; i < scope.vm.founders.length; i++) {
               if (scope.vm.founders[i].id === value) {
                 scope.vm.executive = scope.vm.founders[i]
@@ -54,6 +55,9 @@
           })
         }
       }
+      scope.vm.validate_element = function (name) {
+        element.find('form:first-child').data('validator').element('input[name = "' + name + '"]')
+      }
     }
   }
   Controller.$inject = ['individual', 'passport', 'contact_data', '$scope']
@@ -66,10 +70,13 @@
       positions: []
     }
     vm.founder_config = {} // selectize config
+    vm.multiple_founders = 0 // when there are several founders
+    vm.single_founder = 0 // when there's single founder
     activate()
 
     function activate () {
       vm.executive = {
+        address_coords: [],
         contact_data: contact_data(),
         election_period: 4,
         position_title: '',
@@ -123,14 +130,24 @@
         valueField: 'id',
         labelField: 'title',
         maxItems: 1,
-        placeholder: 'Наименование должности'
+        placeholder: 'Наименование должности',
+        onInitialize: function (selectize) {
+          selectize.on('change', function () {
+            vm.validate_element('position')
+          })
+        }
       }
       vm.election_config = {
         create: false,
         valueField: 'id',
         labelField: 'title',
         maxItems: 1,
-        placeholder: 'Срок избрания'
+        placeholder: 'Срок избрания',
+        onInitialize: function (selectize) {
+          selectize.on('change', function () {
+            vm.validate_element('election_period')
+          })
+        }
       }
     }
   }

@@ -62,6 +62,20 @@
 				</div>
 				<div smb-llc-address executive = 'llc.executive' address = 'llc.address'></div>
 			</fieldset>
+			<fieldset title="7">
+				<legend>7. Система налогообложения</legend>
+				<div ng-cloak class="text-center cloak-loader">
+					<p>Идет загрузка... <i class="fa fa-spinner fa-pulse"></i></p>
+				</div>
+				<div smb-taxes model = "llc"></div>
+			</fieldset>
+			<fieldset title="8">
+				<legend>8. Открытие счета</legend>
+				<div ng-cloak class="text-center cloak-loader">
+					<p>Идет загрузка... <i class="fa fa-spinner fa-pulse"></i></p>
+				</div>
+				<div smb-bank-info model = 'llc' ng-cloak></div>
+			</fieldset>
 			<input type="submit" class="btn btn-primary stepy-finish"/>
 		</div>
 		<!-- <pre>{{llc | json}}</pre> -->
