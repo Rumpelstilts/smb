@@ -1,4 +1,4 @@
-<form id="user-registration-form" smb-validate entity = 'registration' ng-controller = "">
+<form id="user-registration-form" smb-validate entity = 'registration'>
 <!-- 	<div class="form-group">
 		<div class="well">
 			Для регистрации в качестве партнера или банка воспользуйтесь, пожалуйста, <a target="_blank" ui-sref="registration_partner">данной формой</a>.
@@ -6,23 +6,23 @@
 	</div> -->
 	<div class="form-group">
 		<label>Email:</label>
-		<input type="email" class="form-control" placeholder="Email" ng-model="email" name="email">
+		<input type="email" class="form-control" placeholder="Email" ng-model="vm.register_data.email" name="email">
 	</div>
 	<div class="row">
 		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 form-group">
 			<label>Пароль:</label>
-			<input type="password" class="form-control" placeholder="Пароль" ng-model="password" name="password" id="password">
+			<input type="password" class="form-control" placeholder="Пароль" ng-model="vm.register_data.password" name="password" id="password">
 		</div>
 		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 form-group">
 			<label>Повторите пароль:</label>
-			<input type="password" class="form-control" placeholder="Повторите пароль" name="password_repeat">
+			<input type="password" class="form-control" placeholder="Повторите пароль" name="vm.register_data.password_repeat">
 		</div>
 	</div>
 	<div class="form-group" style="margin-bottom: 0;">
-		<label><input type="checkbox" ng-model = 'vm.rules' name="serviceAgreement"> Я согласен с <a ui-sref="termsofuse" target="_blank">условиями пользования сервисом</a></label>
+		<label><input type="checkbox" ng-model = 'vm.agreement.rules' name="serviceAgreement"> Я согласен с <a ui-sref="termsofuse" target="_blank">условиями пользования сервисом</a></label>
 	</div>
 	<div class="form-group">
-		<label><input type="checkbox" ng-model = 'vm.personal_data' name="personalDataAgreement"> Я согласен на <a ui-sref="agreement.do" target="_blank">обработку моих персональных данных</a></label>
+		<label><input type="checkbox" ng-model = 'vm.agreement.personal_data' name="personalDataAgreement"> Я согласен на <a ui-sref="agreement.do" target="_blank">обработку моих персональных данных</a></label>
 	</div>
-	<button type="submit" class="btn btn-success" ng-click="doRegistration()" ng-disabled = '!vm.rules || !vm.personal_data'>Регистрация</button>
+	<button type="submit" class="btn btn-success" ng-click="vm.register()" ng-disabled = '!vm.agreement.rules || !vm.agreement.personal_data'>Регистрация</button>
 </form>

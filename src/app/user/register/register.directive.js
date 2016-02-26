@@ -19,7 +19,7 @@
       restrict: 'A',
       scope: {
       },
-      templateUrl: 'app/user/registration.html'
+      templateUrl: 'app/user/register/registration.html'
     }
     return smbRegister
     function link (scope, element, attrs) {
@@ -32,10 +32,15 @@
       rules: true,
       personal_data: true
     }
+    vm.register = register
     vm.register_data = {
       email: '',
       password: '',
       password_repeat: ''
+    }
+
+    function register () {
+      console.log('opa')
     }
   }
 })()

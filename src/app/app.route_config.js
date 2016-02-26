@@ -14,9 +14,7 @@
       })
       .state('login', {
         url: '/login',
-        templateUrl: 'app/user/login/login.html',
-        controller: 'user_login_controller',
-        controllerAs: 'login'
+        templateUrl: 'app/user/login/login_page.html'
       })
       .state('register_ie', {
         url: '/registration/ie',

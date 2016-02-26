@@ -14,11 +14,13 @@
 		</p>
 
 		<div ng-show="temp_show_registration == 1">
-			<ng-include src="'app/user/register/registration_modal.html'"></ng-include>
+			<div smb-register></div>
+			<!-- <ng-include src="'app/user/register/registration_modal.html'"></ng-include> -->
 		</div>
 
 		<div ng-show="temp_show_registration == 0">
-			<ng-include src="'app/user/login/login_modal.html'"></ng-include>
+			<div smb-login></div>
+			<!-- <ng-include src="'app/user/login/login_modal.html'"></ng-include> -->
 		</div>
 	</div>
 </div>
