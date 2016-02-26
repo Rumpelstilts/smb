@@ -4,17 +4,18 @@
   angular
     .module('smb')
     .factory('user_factory', user_factory)
-  user_factory.$inject = ['$rootScope']
+  user_factory.$inject = ['$rootScope', '$localStorage']
   /* @ngInject */
-  function user_factory ($rootScope) {
+  function user_factory ($rootScope, $localStorage) {
     var service = {
-      val: '',
       update: update
     }
     return service
     // //////////////
-    function update (data) {
-      $rootScope.$broadcast('user_status:updated', data)
+    function update (action) {
+      $localStorage.user_status = (action === 'login') ? 'authorized' : 'unknown'
+      console.log('user_status:' + $localStorage.user_status)
+      $rootScope.$broadcast('user_status:updated')
     }
   }
 })()

@@ -24,8 +24,9 @@
     function link (scope, element, attrs) {
     }
   }
+  Controller.$inject = ['user_factory']
   /* @ngInject */
-  function Controller () {
+  function Controller (user_factory) {
     var vm = this
     vm.login_data = {
       email: '',
@@ -34,6 +35,7 @@
     vm.login = login
 
     function login () {
+      user_factory.update('login')
       console.log('login: ' + vm.login_data.email)
       console.log('password: ' + vm.login_data.password)
     }

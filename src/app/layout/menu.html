@@ -24,7 +24,7 @@
 						<button ui-sref="profile" class="btn btn-success">Личный кабинет</button>
 					</li>
 					<li ng-if="vm.status == 'authorized'">
-						<a ng-click = "logout()">Выход <i class="fa fa-sign-out"></i></a>
+						<a href = 'javascript:void(0)'ng-click = "vm.logout()">Выход <i class="fa fa-sign-out"></i></a>
 					</li>
 				</ul>
 			</div><!--/.nav-collapse -->
