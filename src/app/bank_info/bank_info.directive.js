@@ -63,8 +63,8 @@
           vm.departments = vm.bank_info.departments[vm.selected.city]
           department_selectize.clear()
           department_selectize.clearOptions()
-          department_selectize.addOption(vm.departments
-          )
+          department_selectize.addOption(vm.departments)
+          vm.contact = ''
           console.log(vm.departments)
         })
       }

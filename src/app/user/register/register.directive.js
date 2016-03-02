@@ -23,6 +23,11 @@
     }
     return smbRegister
     function link (scope, element, attrs) {
+      scope.vm.register = function () {
+        if (element.find('form').valid()) {
+          console.log('opa')
+        } else return false
+      }
     }
   }
   /* @ngInject */
@@ -32,15 +37,10 @@
       rules: true,
       personal_data: true
     }
-    vm.register = register
     vm.register_data = {
       email: '',
       password: '',
       password_repeat: ''
-    }
-
-    function register () {
-      console.log('opa')
     }
   }
 })()

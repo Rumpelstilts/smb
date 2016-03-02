@@ -4,8 +4,9 @@
   angular
     .module('smb')
     .directive('smbLogin', smbLogin)
+  smbLogin.$inject = ['user_factory']
   /* @ngInject */
-  function smbLogin () {
+  function smbLogin (user_factory) {
     // Usage:
     //
     // Creates:
@@ -22,22 +23,23 @@
     }
     return smbLogin
     function link (scope, element, attrs) {
+      scope.vm.login = function () {
+        if (element.find('form').valid()) {
+          user_factory.update('login')
+          console.log('login: ' + scope.vm.login_data.email)
+          console.log('password: ' + scope.vm.login_data.password)
+        }
+        else return false
+      }
     }
   }
-  Controller.$inject = ['user_factory']
+
   /* @ngInject */
-  function Controller (user_factory) {
+  function Controller () {
     var vm = this
     vm.login_data = {
       email: '',
       password: ''
-    }
-    vm.login = login
-
-    function login () {
-      user_factory.update('login')
-      console.log('login: ' + vm.login_data.email)
-      console.log('password: ' + vm.login_data.password)
     }
   }
 })()
